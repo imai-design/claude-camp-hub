@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Claude入門 1日キャンプ — 2026年5月11日 参加者用ハブ">
-<title>Claude入門 1日キャンプ / 2026.05.11 — 参加者ハブ</title>
+<meta name="description" content="Claude 1日CAMP — 2026年5月11日 参加者用ハブ">
+<title>Claude 1日CAMP / 2026.05.11 — 参加者ハブ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -555,6 +555,56 @@
     font-size: 12.5px;
     color: var(--orange-dark);
   }
+  .setup-list li .setup-li-body{flex: 1 1 auto; min-width: 0}
+  .setup-list li .cmd-row{
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .setup-list li .cmd-text{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--cream);
+    background: var(--ink);
+    padding: 8px 12px;
+    border-radius: 3px;
+    letter-spacing: .01em;
+    flex: 1 1 220px;
+    min-width: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .setup-list li .cmd-copy{
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 0 16px;
+    border: 1px solid var(--line);
+    background: var(--white);
+    color: var(--ink-soft);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all .15s ease;
+    white-space: nowrap;
+  }
+  .setup-list li .cmd-copy:hover{border-color: var(--orange); color: var(--orange-dark)}
+  .setup-list li .cmd-copy.copied{background: var(--green); color: var(--white); border-color: var(--green)}
+  .setup-list li .cmd-hint{
+    margin-top: 6px;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--ink-faint);
+  }
+  .setup-list li .cmd-hint code{
+    background: transparent;
+    padding: 0;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
 
   /* Phase / flow list (for 14:00, 16:00, 17:00) */
   .phase-list{
@@ -925,6 +975,83 @@
     .login-card{grid-template-columns: 1fr; gap: 16px}
   }
 
+  /* Handout download card */
+  .handout-card{
+    display: block;
+    margin-bottom: 28px;
+    padding: 26px 28px;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+    color: var(--cream);
+    border-radius: 4px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease;
+    box-shadow: var(--shadow-md);
+  }
+  .handout-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(217,119,87,.28), 0 14px 32px rgba(217,119,87,.22);
+  }
+  .handout-card .h-eyebrow{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(253,246,242,.78);
+    margin-bottom: 10px;
+  }
+  .handout-card .h-title{
+    font-family: var(--serif);
+    font-weight: 420;
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.25;
+    margin-bottom: 10px;
+    letter-spacing: -.005em;
+  }
+  .handout-card .h-desc{
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: rgba(253,246,242,.94);
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+  .handout-card .h-meta{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(253,246,242,.7);
+    letter-spacing: .04em;
+    margin-bottom: 18px;
+  }
+  .handout-card .h-cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 20px;
+    background: var(--cream);
+    color: var(--orange-dark);
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    transition: transform .2s ease;
+  }
+  .handout-card:hover .h-cta{transform: translateX(3px)}
+  .handout-card .h-arrow{font-size: 14px; line-height: 1}
+  .handout-card .h-note{
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(253,246,242,.2);
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: rgba(253,246,242,.7);
+  }
+
   /* =========================================================
      Rules / Safety section (two columns)
      ========================================================= */
@@ -1157,7 +1284,7 @@
     </div>
 
     <div class="hero-eyebrow">Today You Build</div>
-    <h1>Claude入門<br>1日<em>キャンプ</em>。</h1>
+    <h1>Claude<br>1日<em>CAMP</em>。</h1>
     <p class="hero-tagline">
       AIに「やってもらう」を、その手で。<br>
       帰ってすぐ使える効率化を、<br>最低ひとつ、この場で完成させましょう。
@@ -1219,8 +1346,8 @@
       <a class="tl-row" href="#sess-10" data-slot="10">
         <div class="tl-time">10:00<span class="end">11:00</span></div>
         <div class="tl-body">
-          <div class="tl-title">フリマ出品</div>
-          <div class="tl-sub">Claude Cowork でブラウザ操作を学びます。架空のフリマサイトに、いらないモノを出品します。</div>
+          <div class="tl-title">ブラウザ操作で出品</div>
+          <div class="tl-sub">Claude Cowork でブラウザ操作。フリマサイトに、いらない物を出品します。</div>
         </div>
         <span class="tl-badge badge-hook">フック</span>
       </a>
@@ -1228,8 +1355,8 @@
       <a class="tl-row" href="#sess-11" data-slot="11">
         <div class="tl-time">11:00<span class="end">12:00</span></div>
         <div class="tl-body">
-          <div class="tl-title">ツール召喚</div>
-          <div class="tl-sub">Claude Code で PC内を操作します。YouTube のリンクから、PCに必要な機能を呼び出します。</div>
+          <div class="tl-title">PCに機能をインストール</div>
+          <div class="tl-sub">Claude Code で PC内を操作。テキストデータから、PC に必要な機能をインストールします。</div>
         </div>
         <span class="tl-badge badge-hook">フック</span>
       </a>
@@ -1238,16 +1365,14 @@
         <div class="tl-time">12:00<span class="end">13:00</span></div>
         <div class="tl-body">
           <div class="tl-title">ランチ休憩</div>
-          <div class="tl-sub">午後に向けて、しっかり休みましょう。</div>
         </div>
-        <span class="tl-badge badge-break">休憩</span>
       </a>
 
       <a class="tl-row" href="#sess-13" data-slot="13">
         <div class="tl-time">13:00<span class="end">14:00</span></div>
         <div class="tl-body">
-          <div class="tl-title">メール処理</div>
-          <div class="tl-sub">朝のメール処理を Claude に任せます。「今日の日付」をどう伝えるか、その作法も身につけます。</div>
+          <div class="tl-title">メール確認を自動化</div>
+          <div class="tl-sub">Cowork で、朝の面倒なメール確認を自動化します。</div>
         </div>
         <span class="tl-badge badge-useful">使える</span>
       </a>
@@ -1255,8 +1380,8 @@
       <a class="tl-row" href="#sess-14" data-slot="14">
         <div class="tl-time">14:00<span class="end">15:00</span></div>
         <div class="tl-body">
-          <div class="tl-title">発注 + 経費</div>
-          <div class="tl-sub">Cowork × Code の最強コラボです。Cowork で詰まったら Code に渡す、現実的な業務フローを学びます。</div>
+          <div class="tl-title">不足品の検知 → 発注 → 経費精算</div>
+          <div class="tl-sub">Cowork × Code で、業務上の不足品を検知し、発注、経費精算まで一気通貫で。</div>
         </div>
         <span class="tl-badge badge-wow">感動</span>
       </a>
@@ -1264,8 +1389,8 @@
       <a class="tl-row" href="#sess-15" data-slot="15">
         <div class="tl-time">15:00<span class="end">16:00</span></div>
         <div class="tl-body">
-          <div class="tl-title">日割り計算</div>
-          <div class="tl-sub">日割り計算ツールを、自分の手で作ります。「自分専用ツール」を持ち帰りましょう。</div>
+          <div class="tl-title">業務ツール作成を自動化</div>
+          <div class="tl-sub">Code で、自分の業務に合わせたツールを自動で作ります。</div>
         </div>
         <span class="tl-badge badge-useful">使える</span>
       </a>
@@ -1273,8 +1398,8 @@
       <a class="tl-row" href="#sess-16" data-slot="16">
         <div class="tl-time">16:00<span class="end">17:00</span></div>
         <div class="tl-body">
-          <div class="tl-title">ビジネス構想</div>
-          <div class="tl-sub">ビジネスを構想して、HPまで一気に作ります。アイデアを形にする一時間です。</div>
+          <div class="tl-title">ビジネスアイデアを HP に</div>
+          <div class="tl-sub">Code で、ビジネスアイデアをそのまま HP まで一気に作り上げます。</div>
         </div>
         <span class="tl-badge badge-wow">感動</span>
       </a>
@@ -1282,8 +1407,8 @@
       <a class="tl-row" href="#sess-17" data-slot="17">
         <div class="tl-time">17:00<span class="end">18:00</span></div>
         <div class="tl-body">
-          <div class="tl-title">まとめ &amp; Q&amp;A</div>
-          <div class="tl-sub">自分のビジネスで使えるかを検討します。質疑応答を経て、明日からの一歩を持ち帰りましょう。</div>
+          <div class="tl-title">業務への反映と質疑応答</div>
+          <div class="tl-sub">ご自身の業務への反映を考えます。質疑応答を経て、明日からの一歩を持ち帰りましょう。</div>
         </div>
         <span class="tl-badge badge-takeaway">持ち帰り</span>
       </a>
@@ -1331,8 +1456,17 @@
             <div class="s-section">
               <h4>全員でやる8ステップ</h4>
               <ol class="setup-list">
-                <li><span>配布物(zip)をダウンロードして、<strong>解凍</strong>する</span></li>
-                <li>デスクトップに <code>claude-camp</code> フォルダを作成</li>
+                <li><span><a href="assets/claude-camp-handout.zip" download="claude-camp-配布物.zip" style="color:var(--orange-dark);text-decoration:underline;text-underline-offset:3px"><strong>配布物(zip)</strong>をダウンロード</a>して、<strong>解凍</strong>する</span></li>
+                <li>
+                  <div class="setup-li-body">
+                    <div>デスクトップに <code>claude-camp</code> フォルダを作成</div>
+                    <div class="cmd-row">
+                      <span class="cmd-text">mkdir -p ~/Desktop/claude-camp</span>
+                      <button class="cmd-copy" data-cmd="mkdir -p ~/Desktop/claude-camp" aria-label="コマンドをコピー">コマンドをコピー</button>
+                    </div>
+                    <div class="cmd-hint">ターミナル(Mac は <code>terminal.app</code>)に貼り付けて Enter で、デスクトップに <code>claude-camp</code> フォルダができます。Finder から手作りでも OK です。</div>
+                  </div>
+                </li>
                 <li><strong>Claude アカウント</strong>を作成</li>
                 <li><strong>Pro 契約</strong>(クレジットカードが必要・当日案内します)</li>
                 <li><strong>Claude デスクトップアプリ</strong>をダウンロード &amp; インストール</li>
@@ -1348,7 +1482,7 @@
 
             <div class="s-section">
               <h4>警告メッセージへの心得</h4>
-              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">セットアップ中、ログイン時などにブラウザや OS から警告が出ることがあります。<strong style="color:var(--ink)">今日のキャンプはすべてダミーサイト</strong>なので、表示された警告はすべて「承認」で進めて大丈夫です。詰まったら手を挙げてください。</p>
+              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">セットアップ中、ログイン時などにブラウザや OS から警告が出ることがあります。<strong style="color:var(--ink)">今日の CAMP はすべてダミーサイト</strong>なので、表示された警告はすべて「承認」で進めて大丈夫です。詰まったら手を挙げてください。</p>
             </div>
 
             <div class="callout">
@@ -1358,14 +1492,14 @@
         </div>
       </details>
 
-      <!-- =========== 10:00 フリマ出品 =========== -->
+      <!-- =========== 10:00 ブラウザ操作で出品 =========== -->
       <details class="session" id="sess-10" data-slot="10">
         <summary>
           <span class="s-num">02</span>
           <div class="s-main">
             <div class="s-time">10:00 — 11:00 / HOOK</div>
-            <div class="s-title">フリマ出品 — Cowork でブラウザ操作</div>
-            <div class="s-tagline">架空のフリマサイト「モノパス」に、いらないモノを出品します。Cowork に「画面操作を任せる」初体験です。</div>
+            <div class="s-title">ブラウザ操作で出品 — Cowork</div>
+            <div class="s-tagline">フリマサイト「モノパス」に、いらない物を出品します。Cowork に「画面操作を任せる」初体験です。</div>
           </div>
           <button class="s-check" data-check="10" aria-label="完了マーク">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1560,14 +1694,14 @@
         </div>
       </details>
 
-      <!-- =========== 11:00 ツール召喚 =========== -->
+      <!-- =========== 11:00 PCに機能をインストール =========== -->
       <details class="session" id="sess-11" data-slot="11">
         <summary>
           <span class="s-num">03</span>
           <div class="s-main">
             <div class="s-time">11:00 — 12:00 / HOOK</div>
-            <div class="s-title">ツール召喚 — Claude Code で PC内を操作</div>
-            <div class="s-tagline">YouTube のリンクから、PC に必要な機能を呼び出します。Playwright と pdftotext を入れて、午後への布石を打ちます。</div>
+            <div class="s-title">PCに機能をインストール — Claude Code で PC内を操作</div>
+            <div class="s-tagline">テキストデータから、PC に必要な機能をインストールします。Playwright と pdftotext を入れて、午後への布石を打ちます。</div>
           </div>
           <button class="s-check" data-check="11" aria-label="完了マーク">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1873,8 +2007,8 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
           <span class="s-num">05</span>
           <div class="s-main">
             <div class="s-time">13:00 — 14:00 / USEFUL</div>
-            <div class="s-title">メール処理 — 朝のメール処理を Claude に任せる</div>
-            <div class="s-tagline">「今日の日付」をどう伝えるか、その作法もここで掴みます。失敗例 → 成功例の対比で学びます。</div>
+            <div class="s-title">メール確認を自動化 — 朝の面倒なメール確認を Cowork に任せる</div>
+            <div class="s-tagline">朝のメール確認を Cowork に任せます。「今日の日付」をどう伝えるか、その作法も、失敗例 → 成功例の対比で学びます。</div>
           </div>
           <button class="s-check" data-check="13" aria-label="完了マーク">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2111,8 +2245,8 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
           <span class="s-num">06</span>
           <div class="s-main">
             <div class="s-time">14:00 — 15:00 / WOW</div>
-            <div class="s-title">発注 + 経費 — Cowork × Code の最強コラボ</div>
-            <div class="s-tagline">画面操作は Cowork、データ処理は Code。Cowork で詰まったら Code に渡す、現実的な業務フローを体験します。</div>
+            <div class="s-title">不足品の検知 → 発注 → 経費精算 — Cowork × Code</div>
+            <div class="s-tagline">業務上の不足品を検知し、発注、経費精算まで一気通貫で。Cowork で詰まったら Code に渡す、現実的な業務フローを体験します。</div>
           </div>
           <button class="s-check" data-check="14" aria-label="完了マーク">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2173,7 +2307,7 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
           <span class="s-num">07</span>
           <div class="s-main">
             <div class="s-time">15:00 — 16:00 / USEFUL</div>
-            <div class="s-title">日割り計算 — 自分専用ツールを作る</div>
+            <div class="s-title">業務ツール作成を自動化 — Code で自分専用ツールを作る</div>
             <div class="s-tagline">日割り計算ツールを、自分の手で作ります。「自分のためだけのツール」を持ち帰りましょう。</div>
           </div>
           <button class="s-check" data-check="15" aria-label="完了マーク">
@@ -2230,7 +2364,7 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
           <span class="s-num">08</span>
           <div class="s-main">
             <div class="s-time">16:00 — 17:00 / WOW</div>
-            <div class="s-title">ビジネス構想 — HPまで一気に作る</div>
+            <div class="s-title">ビジネスアイデアを HP に — Code で一気に</div>
             <div class="s-tagline">ビジネスを構想して、HP まで一気に作ります。アイデアが形になる、感動の一時間です。</div>
           </div>
           <button class="s-check" data-check="16" aria-label="完了マーク">
@@ -2299,14 +2433,14 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
         </div>
       </details>
 
-      <!-- =========== 17:00 まとめ =========== -->
+      <!-- =========== 17:00 業務への反映と質疑応答 =========== -->
       <details class="session" id="sess-17" data-slot="17">
         <summary>
           <span class="s-num">09</span>
           <div class="s-main">
             <div class="s-time">17:00 — 18:00 / TAKEAWAY</div>
-            <div class="s-title">まとめ &amp; Q&amp;A</div>
-            <div class="s-tagline">自分のビジネスで使えるかを検討します。質疑応答を経て、明日からの一歩を持ち帰りましょう。</div>
+            <div class="s-title">業務への反映と質疑応答</div>
+            <div class="s-tagline">ご自身の業務への反映を、ご一緒に考えます。質疑応答を経て、明日からの一歩を持ち帰りましょう。</div>
           </div>
           <button class="s-check" data-check="17" aria-label="完了マーク">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2395,9 +2529,27 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
   <div class="wrap">
     <div class="section-head">
       <div class="section-eyebrow">— Section 03 / Toolbox</div>
-      <h2 class="section-title">配布<em>サイト</em>。</h2>
-      <p class="section-lede">本日触る4つのダミーサイト。すべて GitHub Pages にホストされた、安全な架空のサービスです。</p>
+      <h2 class="section-title">配布<em>物 &amp; サイト</em>。</h2>
+      <p class="section-lede">本日の配布物（zip）と、触る4つのダミーサイトです。サイトはすべて GitHub Pages にホストされた、安全な架空のサービスです。</p>
     </div>
+
+    <a class="handout-card" href="assets/claude-camp-handout.zip" download="claude-camp-配布物.zip">
+      <div class="h-eyebrow">Handout · ZIP</div>
+      <div class="h-title">本日の配布物（zip）をダウンロード</div>
+      <div class="h-desc">README ／ 11時セッションの文字起こし（participant_transcript.md）／ 家で入れる用の手順書（VSCode・GitHub）／ チャットフレーズ集 を同梱しています。9:00 のセットアップで使います。</div>
+      <div class="h-meta">
+        <span>claude-camp-配布物.zip</span>
+        <span>·</span>
+        <span>約 12 KB</span>
+        <span>·</span>
+        <span>更新: 2026-05-11</span>
+      </div>
+      <div class="h-cta">
+        <span>ダウンロード</span>
+        <span class="h-arrow">↓</span>
+      </div>
+      <div class="h-note">※ 配布物の無断転載・再配布は禁止します。受講生ご本人のみご利用ください。</div>
+    </a>
 
     <div class="resource-grid">
       <a class="resource" href="https://imai-design.github.io/monopass/" target="_blank" rel="noopener">
@@ -2507,7 +2659,7 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
     <div class="f-grid">
       <div>
         <h3>Today's Compass</h3>
-        <p>Claude入門 1日キャンプ<br>2026年 5月 11日(月)<br>9:00–18:00 / Zoom</p>
+        <p>Claude 1日CAMP<br>2026年 5月 11日(月)<br>9:00–18:00 / Zoom</p>
       </div>
       <div>
         <h3>Need Help?</h3>
@@ -2534,15 +2686,15 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
   // Camp date: 2026-05-11 (Mon). All times JST.
   // Session boundaries by hour slot.
   const SLOTS = [
-    {slot:'09', start:9,  end:10, title:'セットアップ',     id:'sess-09'},
-    {slot:'10', start:10, end:11, title:'フリマ出品',       id:'sess-10'},
-    {slot:'11', start:11, end:12, title:'ツール召喚',       id:'sess-11'},
-    {slot:'12', start:12, end:13, title:'ランチ休憩',       id:'sess-12'},
-    {slot:'13', start:13, end:14, title:'メール処理',       id:'sess-13'},
-    {slot:'14', start:14, end:15, title:'発注 + 経費',      id:'sess-14'},
-    {slot:'15', start:15, end:16, title:'日割り計算',       id:'sess-15'},
-    {slot:'16', start:16, end:17, title:'ビジネス構想',     id:'sess-16'},
-    {slot:'17', start:17, end:18, title:'まとめ & Q&A',     id:'sess-17'}
+    {slot:'09', start:9,  end:10, title:'セットアップ',                       id:'sess-09'},
+    {slot:'10', start:10, end:11, title:'ブラウザ操作で出品',                 id:'sess-10'},
+    {slot:'11', start:11, end:12, title:'PCに機能をインストール',             id:'sess-11'},
+    {slot:'12', start:12, end:13, title:'ランチ休憩',                         id:'sess-12'},
+    {slot:'13', start:13, end:14, title:'メール確認を自動化',                 id:'sess-13'},
+    {slot:'14', start:14, end:15, title:'不足品の検知 → 発注 → 経費精算',    id:'sess-14'},
+    {slot:'15', start:15, end:16, title:'業務ツール作成を自動化',             id:'sess-15'},
+    {slot:'16', start:16, end:17, title:'ビジネスアイデアを HP に',           id:'sess-16'},
+    {slot:'17', start:17, end:18, title:'業務への反映と質疑応答',             id:'sess-17'}
   ];
   const CAMP_DATE = '2026-05-11';
 
@@ -2633,6 +2785,33 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
         ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
         showToast('プロンプトをコピーしました');
       }
+    });
+  });
+
+  /* ---------- Copy buttons (terminal commands) ---------- */
+  document.querySelectorAll('.cmd-copy').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const cmd = btn.getAttribute('data-cmd');
+      if(!cmd) return;
+      const fallback = () => {
+        const ta = document.createElement('textarea');
+        ta.value = cmd; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      };
+      try{
+        await navigator.clipboard.writeText(cmd);
+      }catch(err){
+        fallback();
+      }
+      const original = btn.textContent;
+      btn.classList.add('copied');
+      btn.textContent = '✓ コピー済み';
+      showToast('コマンドをコピーしました');
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = original;
+      }, 1800);
     });
   });
 
