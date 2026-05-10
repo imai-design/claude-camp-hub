@@ -1179,6 +1179,95 @@
     margin-top: 6px;
   }
 
+  /* Cowork vs Code comparison */
+  .ccvs{
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .ccvs-head{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+  }
+  .ccvs-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .ccvs-col{
+    padding: 16px 18px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+  }
+  .ccvs-col .ccvs-label{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -.005em;
+  }
+  .ccvs-col .ccvs-tag{
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+  .ccvs-col.cowork .ccvs-tag{
+    background: var(--orange-soft);
+    color: var(--orange-dark);
+  }
+  .ccvs-col.code .ccvs-tag{
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .ccvs-col .ccvs-desc{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    line-height: 1.55;
+  }
+  .ccvs-col ul{
+    list-style: none;
+    padding: 12px 0 0 0;
+    margin: 12px 0 0 0;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    border-top: 1px dashed var(--line-soft);
+  }
+  .ccvs-col ul li{
+    padding: 4px 0;
+    position: relative;
+    padding-left: 16px;
+  }
+  .ccvs-col ul li::before{
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+  }
+  .ccvs-foot{
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--cream-deep);
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 640px){
+    .ccvs-grid{grid-template-columns: 1fr}
+  }
+
   /* =========================================================
      Footer
      ========================================================= */
@@ -3397,6 +3486,37 @@ HPのファイル一式を1つのフォルダにまとめてください。
           <li><span class="mark yes">✓</span><span>画面に表示されている要素の認識</span></li>
           <li><span class="mark no">✕</span><span>ファイルアップロード</span></li>
         </ul>
+
+        <div class="ccvs">
+          <div class="ccvs-head">Cowork と Code の使い分け</div>
+          <div class="ccvs-grid">
+            <div class="ccvs-col cowork">
+              <div class="ccvs-label">Cowork</div>
+              <div class="ccvs-tag">GUI 担当</div>
+              <div class="ccvs-desc">画面に「見えるもの」を操作。マウスでクリックする世界。</div>
+              <ul>
+                <li>ブラウザでサイトを開く</li>
+                <li>フォーム入力 / ボタンクリック</li>
+                <li>画面に表示された情報を読み取る</li>
+                <li>ページ遷移を伴う作業全般</li>
+              </ul>
+            </div>
+            <div class="ccvs-col code">
+              <div class="ccvs-label">Code</div>
+              <div class="ccvs-tag">CUI 担当</div>
+              <div class="ccvs-desc">PC の「裏側」を操作。文字コマンドで動かす世界。</div>
+              <ul>
+                <li>ファイル / フォルダの読み書き</li>
+                <li>コード生成 / HTML 作成 / ツール開発</li>
+                <li>ターミナルコマンドの実行</li>
+                <li>アプリ / 拡張機能のインストール</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ccvs-foot">
+            <strong style="color:var(--ink)">GUI</strong> = グラフィカル(画面の)ユーザーインターフェース／<strong style="color:var(--ink)">CUI</strong> = キャラクター(文字の)ユーザーインターフェース。<strong style="color:var(--ink)">Cowork で詰まったら Code に渡す</strong> — 両者を使い分けるのが、現実の業務スタイルです（14:00 セッションで実演します）。
+          </div>
+        </div>
 
         <div class="date-rule">
           <div class="label">★ Today's Rule</div>
