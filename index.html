@@ -576,7 +576,8 @@
     overflow-x: auto;
     white-space: nowrap;
   }
-  .setup-list li .cmd-copy{
+  .setup-list li .cmd-copy,
+  .setup-list li .cmd-link{
     font-family: var(--mono);
     font-size: 10px;
     font-weight: 600;
@@ -591,7 +592,8 @@
     transition: all .15s ease;
     white-space: nowrap;
   }
-  .setup-list li .cmd-copy:hover{border-color: var(--orange); color: var(--orange-dark)}
+  .setup-list li .cmd-copy:hover,
+  .setup-list li .cmd-link:hover{border-color: var(--orange); color: var(--orange-dark)}
   .setup-list li .cmd-copy.copied{background: var(--green); color: var(--white); border-color: var(--green)}
   .setup-list li .cmd-hint{
     margin-top: 6px;
@@ -1458,11 +1460,7 @@
                 <li>
                   <div class="setup-li-body">
                     <div>デスクトップに <code>claude-camp</code> フォルダを作成</div>
-                    <div class="cmd-row">
-                      <span class="cmd-text">mkdir -p ~/Desktop/claude-camp</span>
-                      <button class="cmd-copy" data-cmd="mkdir -p ~/Desktop/claude-camp" aria-label="コマンドをコピー">コマンドをコピー</button>
-                    </div>
-                    <div class="cmd-hint">ターミナル(Mac は <code>terminal.app</code>)に貼り付けて Enter で、デスクトップに <code>claude-camp</code> フォルダができます。Finder から手作りでも OK です。</div>
+                    <div class="cmd-hint">デスクトップで <strong>右クリック → 新規フォルダ</strong>（Windows は「新規作成 → フォルダー」）。名前を <code>claude-camp</code> にする。Mac / Windows 共通の作り方です。</div>
                   </div>
                 </li>
                 <li><span><a href="assets/claude-camp-handout.zip" download="claude-camp-配布物.zip" style="color:var(--orange-dark);text-decoration:underline;text-underline-offset:3px"><strong>配布物(zip)</strong>をダウンロード</a>して、<strong>解凍したフォルダを <code>claude-camp</code> の中に入れる</strong></span></li>
@@ -1471,7 +1469,7 @@
                     <div><strong>VS Code</strong>をダウンロード &amp; インストール</div>
                     <div class="cmd-row">
                       <span class="cmd-text">https://code.visualstudio.com/download</span>
-                      <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener" class="cmd-copy" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">サイトを開く ↗</a>
+                      <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener" class="cmd-link" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">サイトを開く ↗</a>
                     </div>
                     <div class="cmd-hint">配布物内の <code>VSCode手順書.txt</code> も合わせてご覧ください。</div>
                   </div>
@@ -1481,7 +1479,7 @@
                     <div><strong>Claude アカウント</strong>を作成</div>
                     <div class="cmd-row">
                       <span class="cmd-text">https://claude.ai/new</span>
-                      <a href="https://claude.ai/new" target="_blank" rel="noopener" class="cmd-copy" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">サイトを開く ↗</a>
+                      <a href="https://claude.ai/new" target="_blank" rel="noopener" class="cmd-link" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">サイトを開く ↗</a>
                     </div>
                   </div>
                 </li>
@@ -2303,8 +2301,303 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
               <strong>学びのポイント:</strong> Cowork は「画面に見えるもの」が得意、Code は「ファイル処理・自動化」が得意です。<strong>両方を使い分けると、現実の業務全体が自動化できます</strong>。今日のクライマックスです。
             </div>
 
-            <div class="callout placeholder">
-              <strong>プロンプト本文は本番までに用意。</strong> 完成次第ここに掲載されます(実演用 / 実習①用 / 実習②用 を Cowork パートと Code パートそれぞれ 3 本ずつ)。
+            <div class="s-section">
+              <h4>講師実演 — Cowork パート / 発注 + 領収書DL</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                在庫スプレッドシートを確認 → Quick Office で発注 → 領収書PDFをDL まで、Cowork が画面操作を一気に。注目していただきたいのは <strong>「1ステップごとに止まって報告」</strong>「ログイン情報の渡し方」の指示です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">DEMO ①</span>講師実演 / Cowork パート</span>
+                  <button class="copy-btn" data-copy="p-14-demo-cowork">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-14-demo-cowork">今日は2026年5月11日(月)です。在庫管理スプレッドシートを見て、足りないものを Quick Office で発注してほしい。1ステップごとに止まって、私に結果を報告してください。
+
+## ステップ1:在庫スプレッドシートを確認
+
+以下のURLを開いてください:
+https://docs.google.com/spreadsheets/d/1dv8UauZbpe99I3cmmLGbPth09YBzo1bwZdoYtH33PLs/edit?usp=sharing
+
+「要発注」ステータスの商品をすべてリストアップしてください。
+
+→ 結果を報告。
+
+## ステップ2:Quick Office にログイン
+
+ブラウザで `https://imai-design.github.io/quick-office/` を開いて、
+任意のメアド・パスワードでログインしてください(例:test@example.com / Camp2026Secure)。
+
+→ ログイン完了を報告。
+
+## ステップ3:発注
+
+ステップ1でリストアップした「要発注」の商品を、Quick Office で順次カートに追加してください。
+全部カートに入れたら、注文を確定してください。
+
+→ 注文完了を報告。
+
+## ステップ4:領収書PDFをダウンロード
+
+注文完了画面から、領収書をダウンロードしてください。
+ダウンロードしたPDFのファイル名を私に教えてください。
+
+→ ファイル名を報告して、ここで一旦停止。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>講師実演 — Code パート / PDF解析 + 経費申請</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                ここから Cowork は降りて、<strong>Code が pdftotext で PDF解析 → Playwright で Easy経費 を自動入力</strong>します。「Cowork で詰まったら Code に渡す」橋渡しの実演です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">DEMO ②</span>講師実演 / Code パート</span>
+                  <button class="copy-btn" data-copy="p-14-demo-code">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-14-demo-code">今日は2026年5月11日(月)です。
+ダウンロードフォルダにある最新の Quick Office 領収書PDFを処理して、Easy経費に経費申請を出してほしい。
+
+## やってほしいこと
+
+### Step 1:最新の領収書PDFを特定
+
+`~/Downloads/` フォルダから、ファイル名が `QO-` で始まる最新のPDFを見つけてください。
+
+→ ファイル名を報告。
+
+### Step 2:PDF からテキスト抽出
+
+pdftotext を使って、PDF からテキストを抽出してください。
+抽出したテキストから以下の情報を読み取ってください:
+- 発行日
+- 領収書番号
+- 領収金額(税込)
+- 但し書き / 明細
+- 発行元の会社名
+
+→ 抽出結果を報告。
+
+### Step 3:Easy経費を起動して自動入力
+
+Playwright を使って、Easy経費 (`https://imai-design.github.io/easy-keihi/`) を操作してください:
+
+1. ブラウザを起動して Easy経費 を開く
+2. 任意のメアド・パスワードでログイン(例:test@example.com / Camp2026Secure)
+3. 「+ 新規経費申請」ページに移動
+4. 以下の項目をフォームに入力:
+   - 利用日:領収書の発行日
+   - 利用先:発行元の会社名(Quick Office株式会社)
+   - 金額:領収金額
+   - 勘定科目:消耗品費(オフィス用品なので)
+   - 用途・摘要:但し書き + 明細を要約
+5. 入力完了後、私に確認を求める(まだ「申請する」は押さない)
+
+→ 入力内容を報告。
+
+### Step 4:申請実行
+
+私がOKと言ったら、「申請する」ボタンを押してください。
+申請完了後、ダッシュボードに反映されているか確認してください。
+
+→ 結果を報告。
+
+## 重要
+
+- 各Stepで進捗を報告してください
+- Playwright のブラウザは画面に表示してください(ヘッドレスではなく)
+- エラーが出たら止まって相談</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>実習① — 1ステップずつ確認</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                参加者ご自身が Cowork に指示して発注を体験 → 領収書DL完了で Code に切り替え、PDF を読んで Easy経費 に転記。<strong>1ステップずつ確認しながら</strong>進めることで、Cowork × Code 連携のリズムを掴みます。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE A</span>Cowork パート / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-14-a-cowork">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-14-a-cowork">今日は2026年5月11日(月)です。在庫管理スプレッドシートを見て、足りないものを Quick Office で発注してほしい。1ステップごとに止まって、私に結果を報告してください。
+
+## ステップ1:在庫スプレッドシートを確認
+
+以下のURLを開いてください:
+https://docs.google.com/spreadsheets/d/1dv8UauZbpe99I3cmmLGbPth09YBzo1bwZdoYtH33PLs/edit?usp=sharing
+
+「要発注」ステータスの商品の中から、**3つだけ**選んでリストアップしてください。
+
+→ 結果を報告して、私が「次へ」と言ったら次のステップへ。
+
+## ステップ2:Quick Office にログイン
+
+ブラウザで `https://imai-design.github.io/quick-office/` を開いて、
+任意のメアド・パスワードでログインしてください。
+
+→ 結果を報告。
+
+## ステップ3:カートに追加
+
+ステップ1で選んだ3商品を、Quick Office でカートに追加してください。
+追加完了したら、カート画面を見せてください。
+
+→ 結果を報告。
+
+## ステップ4:注文確定
+
+カート画面で「注文を確定する」ボタンを押してください。
+注文完了画面に進んだら、注文番号を教えてください。
+
+→ 結果を報告。
+
+## ステップ5:領収書PDFをダウンロード
+
+注文完了画面から、領収書をダウンロードしてください。
+ダウンロードしたファイル名を教えてください。
+
+→ ファイル名を報告して、ここで停止してください。
+このあとは Code 側で続きの作業をします。</div>
+              </div>
+
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE A</span>Code パート / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-14-a-code">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-14-a-code">今日は2026年5月11日(月)です。
+ダウンロードフォルダにある最新の Quick Office 領収書PDFを処理して、Easy経費に経費申請を出してほしい。1ステップずつ確認しながら進めてください。
+
+## Step 1:最新の領収書PDFを特定
+
+`~/Downloads/` から、ファイル名が `QO-` で始まる最新のPDFを見つけてください。
+
+→ ファイル名を報告して、私が「次へ」と言ったら次のステップへ。
+
+## Step 2:PDF からテキスト抽出
+
+pdftotext を使って、PDFからテキストを抽出して、以下を読み取ってください:
+- 発行日
+- 領収金額(税込)
+- 発行元の会社名
+- 但し書き / 明細
+
+→ 抽出結果を報告。私が「次へ」と言ったら次のステップへ。
+
+## Step 3:Easy経費を Playwright で起動
+
+Playwright で Easy経費 (`https://imai-design.github.io/easy-keihi/`) を開いてください。
+ログイン画面が表示されたら、任意のメアド・パスワードでログインしてください。
+
+→ ログイン完了を報告。
+
+## Step 4:新規経費申請ページに進む
+
+「+ 新規経費申請」ボタンをクリックして、申請ページに進んでください。
+
+→ 完了を報告。
+
+## Step 5:フォーム入力(まだ申請しない)
+
+Step 2 で抽出した情報を元に、以下の項目を入力してください:
+- 利用日:領収書の発行日
+- 利用先:発行元の会社名
+- 金額:領収金額
+- 勘定科目:消耗品費
+- 用途・摘要:但し書きと明細を要約
+
+入力完了したら、私に内容を確認させてください。**まだ「申請する」は押さない**。
+
+→ 入力内容を報告。
+
+## Step 6:申請実行
+
+私がOKと言ったら、「申請する」ボタンを押してください。
+ダッシュボードに反映されているか確認してください。
+
+→ 結果を報告。
+
+## 重要
+
+- 各Stepで止まって私の確認を取ってください
+- Playwright のブラウザは画面に表示(ヘッドレスではなく)
+- エラーが出たら止まって相談</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>実習② — 自動実行</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                確認なしで一気に発注 → 経費申請まで。<strong>Cowork × Code 連携を完全自動で体験</strong>します。「どこまで任せられるか」を掴む時間です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE B</span>Cowork パート / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-14-b-cowork">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-14-b-cowork">今日は2026年5月11日(月)です。
+在庫スプレッドシートを見て、要発注の商品を Quick Office で発注して、領収書PDFをダウンロードまで一気にやってください。
+
+## やってほしいこと(確認なしで一気に)
+
+1. 以下のURLで在庫スプレッドシートを確認:
+   https://docs.google.com/spreadsheets/d/1dv8UauZbpe99I3cmmLGbPth09YBzo1bwZdoYtH33PLs/edit?usp=sharing
+2. 「要発注」ステータスの中から **3つ**を自分で選ぶ
+3. Quick Office (`https://imai-design.github.io/quick-office/`) を開いて、ログイン
+4. 選んだ3商品をカートに追加
+5. 注文を確定
+6. 領収書PDFをダウンロード
+
+## 完了報告
+
+すべて完了したら、以下を報告:
+- 発注した3商品
+- 注文番号
+- ダウンロードした領収書PDFのファイル名
+
+## トラブル時のみ止まる
+
+エラー時のみ止まって相談。それ以外は途中で確認を取らず、最後まで進めてください。
+
+このあとは Code 側で経費申請をします。</div>
+              </div>
+
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE B</span>Code パート / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-14-b-code">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-14-b-code">今日は2026年5月11日(月)です。
+ダウンロードフォルダにある最新の Quick Office 領収書PDFを処理して、Easy経費に経費申請まで一気にやってください。
+
+## やってほしいこと(確認なしで一気に)
+
+1. `~/Downloads/` から最新の `QO-` で始まるPDFを見つける
+2. pdftotext でテキスト抽出 → 必要な情報を読み取る
+3. Playwright で Easy経費 (`https://imai-design.github.io/easy-keihi/`) を開く
+4. ログイン
+5. 「+ 新規経費申請」へ
+6. 入力項目をすべて埋める(利用日・利用先・金額・勘定科目・用途/摘要)
+7. 「申請する」ボタンをクリック
+8. ダッシュボードに反映されたか確認
+
+## 完了報告
+
+すべて完了したら、以下を報告:
+- 処理したPDFのファイル名
+- 抽出した情報のサマリー
+- 申請した経費の概要
+- ダッシュボードの反映状況
+
+## トラブル時のみ止まる
+
+エラー時のみ止まって相談。</div>
+              </div>
             </div>
           </div>
         </div>
