@@ -1854,6 +1854,86 @@
             </div>
 
             <div class="s-section">
+              <h4>ECC (Everything Claude Code) — Claude Code を拡張する</h4>
+              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft)">ECC は、Claude Code を <strong style="color:var(--ink)">サブエージェント / スラッシュコマンド / カスタムフック / MCP 連携</strong> などで拡張するためのキットです。Playwright と pdftotext が「使える道具を増やす」拡張だとすると、<strong style="color:var(--ink)">ECC は「Claude 自身を賢くする」拡張</strong>です。前の実習に続けて、ここで一緒に入れてしまいましょう。</p>
+              <p style="font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin-top:10px">導入のときは <strong style="color:var(--ink)">Claude Code 本人に手伝ってもらう</strong>のが一番ラクです。下のプロンプトを Code に渡せば、README の理解 → 依存関係チェック → インストール計画 → 実行 → 動作確認まで一気通貫でやってくれます。</p>
+              <p style="margin-top:14px;font-size:13px"><a href="https://github.com/affaan-m/everything-claude-code" target="_blank" rel="noopener" style="color:var(--orange-dark);text-decoration:none;border-bottom:1px solid var(--orange-soft);font-family:var(--mono);letter-spacing:.02em">github.com/affaan-m/everything-claude-code ↗</a></p>
+
+              <div class="scene-note" style="margin-top:18px">
+                <span class="scene-label">Setup</span>
+                実習①②で Playwright と pdftotext を入れたあと、続けてこのプロンプトを Code に渡してください。各 Step で<strong>確認を取りながら進めるよう</strong>に書いてあるので、安全に進められます。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">SETUP</span>ECC セットアップ / Claude Code 用</span>
+                  <button class="copy-btn" data-copy="p-11-ecc">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-11-ecc">github.com/affaan-m/everything-claude-code というリポジトリで紹介されている ECC (Everything Claude Code) を、私の環境にセットアップしてほしい。
+
+## 私の状況
+
+- Mac ユーザー(Windows の方は適宜読み替えてください)
+- Claude Code はインストール済み
+- 直前の実習で Playwright と pdftotext をインストール済み
+- Claude Code 自体を拡張して、もっと業務に使えるようにしたい
+
+## やってほしいこと
+
+### Step 1: README を読む
+
+まず https://github.com/affaan-m/everything-claude-code の README を読んで、以下を整理してください:
+- ECC とは何か / 何をするツールか
+- 含まれている機能(サブエージェント、スラッシュコマンド、フック、MCP など)
+- セットアップに必要な依存関係
+- 推奨インストール手順
+- 動作確認の方法
+
+→ 整理して報告してください。
+
+### Step 2: 依存関係チェック
+
+私の環境で、ECC のセットアップに不足しているものをチェックしてください。
+- 必須ツール(git、Node.js などがあれば)
+- 推奨ツール
+- 既存の `~/.claude/` ディレクトリの状態と、上書きされそうな箇所
+
+→ 不足や注意点があれば教えてください。
+
+### Step 3: インストール計画
+
+セットアップ計画を立てて、私に承認を求めてください。
+- 何を、どの順番でインストール / 配置するか
+- 既存の Claude Code 設定への影響(.claude ディレクトリの扱い、バックアップの取り方)
+- 想定所要時間
+- リスクや戻し方
+
+→ 私が「OK」と言ったら次へ。
+
+### Step 4: インストール実行
+
+承認後、計画通りにセットアップしてください。
+- 各ステップ完了時に進捗を報告
+- パスワード等が必要な場合は、私に教えてください
+- 既存ファイルを上書きする前に、必ずバックアップを取る
+
+### Step 5: 動作確認
+
+簡単なテスト(任意のスラッシュコマンドやサブエージェント呼び出し)で動作確認してください。
+うまく動かない箇所があれば、原因と対処案を一緒に提示してください。
+
+→ 結果を報告。
+
+## 重要
+
+- 各 Step で必ず私の確認を取ってください
+- 既存の Claude Code 設定を上書きする場合は、必ず事前に警告
+- エラーが出たら止まって相談
+
+それでは Step 1 から開始してください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
               <h4>配布する文字起こしテキスト(全文)</h4>
               <div class="scene-note">
                 <span class="scene-label">Handout</span>
@@ -3042,12 +3122,11 @@ HPのファイル一式を1つのフォルダにまとめてください。
         <div class="s-body">
           <div class="s-body-inner">
             <div class="s-meta">
-              <div><span class="label">構成</span><span class="val">検討15分 → 発表15分 → 紹介20分 → Q&amp;A 10分</span></div>
-              <div><span class="label">紹介する</span><span class="val">Obsidian 連携 / ECC</span></div>
+              <div><span class="label">構成</span><span class="val">検討15分 → 発表15分 → Q&amp;A 30分</span></div>
             </div>
 
             <div class="s-section">
-              <h4>このセッションの構成(4 Phase)</h4>
+              <h4>このセッションの構成(3 Phase)</h4>
               <ul class="phase-list">
                 <li class="phase">
                   <div>
@@ -3063,14 +3142,8 @@ HPのファイル一式を1つのフォルダにまとめてください。
                 </li>
                 <li class="phase">
                   <div>
-                    <div class="p-title">Obsidian + ECC 紹介<span class="p-time">20 分</span></div>
-                    <div class="p-body"><strong>Obsidian 連携実演(10 分):</strong> ローカルの Markdown ノートに業務知識を貯めて、<strong>別ターミナル / 別セッションの Claude Code でも「いつもの自分」で続きを始められる</strong>感覚を実演します。「毎回ゼロから説明しなおす問題」への現実的な解です。<br><strong>ECC 紹介(10 分):</strong> Claude Code をサブエージェント / スラッシュコマンド / フックで拡張するキットのご案内。当日は概要のみ、<strong>ご自宅での導入</strong>は下の「Obsidian + ECC 詳細」セクションのプロンプトを Code に渡せば一気に終わります。</div>
-                  </div>
-                </li>
-                <li class="phase">
-                  <div>
-                    <div class="p-title">質疑応答 + 締めの挨拶<span class="p-time">10 分</span></div>
-                    <div class="p-body">挙手または Zoom チャットで質問を集めます。最後に締めの挨拶(下記)をお伝えします。</div>
+                    <div class="p-title">質疑応答 + 締めの挨拶<span class="p-time">30 分</span></div>
+                    <div class="p-body">挙手または Zoom チャットで質問を集めます。じっくり時間をとって、お一人ずつの疑問にお答えします。最後に締めの挨拶(下記)をお伝えします。</div>
                   </div>
                 </li>
               </ul>
@@ -3184,289 +3257,6 @@ HPのファイル一式を1つのフォルダにまとめてください。
               </ul>
 
               <p style="margin-top:18px;font-size:13px"><a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener" style="color:var(--orange-dark);text-decoration:none;border-bottom:1px solid var(--orange-soft);font-family:var(--mono);letter-spacing:.02em">公式ドキュメント: code.claude.com/docs/en/vs-code ↗</a></p>
-            </div>
-
-            <div class="s-section">
-              <h4>Obsidian 連携 — Code に「いつもの自分」を覚えさせる</h4>
-              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft)">Obsidian は、<strong style="color:var(--ink)">ローカルで動く Markdown ノートアプリ</strong>です。普通のフォルダ（=「Vault / 金庫」と呼びます）の中に <code>.md</code> ファイルとしてメモを貯めるだけ。サーバーにアップロードせず、自分の PC の中だけで完結します。</p>
-              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft);margin-top:10px">この「<strong style="color:var(--ink)">ただのフォルダ＋ Markdown</strong>」という素朴さが、Claude Code との相性を抜群にします。<strong style="color:var(--ink)">Claude Code は、テキストファイルを読み書きするのが本職</strong>です。同じフォルダを Claude Code から開けば、メモを読んで答えてくれるし、新しい知見を書き込んでもくれます。<strong style="color:var(--ink)">毎回ゼロから説明しなおさなくていい状態</strong>が手に入ります。</p>
-
-              <div style="margin-top:18px;padding:18px 22px;background:var(--cream);border-left:3px solid var(--orange);border-radius:0 2px 2px 0">
-                <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:8px">Why this works</div>
-                <ul style="list-style:none;padding:0;margin:0;font-size:13.5px;line-height:1.8;color:var(--ink)">
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;Markdown は <strong>AI が一番読みやすい形式</strong>（書きやすくもある）</li>
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;Vault は <strong>ただのフォルダ</strong>。Claude Code が <code>cd</code> して中身を直接読める</li>
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;次のセッション・別ターミナル・別 PC でも、<strong>同じ Vault を見れば同じ前提</strong>で再開できる</li>
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;Claude が学びを Vault に書き込むので、<strong>知識が「複利」で増える</strong></li>
-                  <li style="padding:4px 0">✓ &nbsp;すべてローカルファイルなので、<strong>Claude 以外の AI（ChatGPT、Gemini など）にも乗り換えられる</strong></li>
-                </ul>
-              </div>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">必要なもの</h5>
-              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li>Obsidian（無料）</li>
-                <li>Claude Code（既にインストール済み）</li>
-                <li>少しの「自分のメモ」を貯める時間</li>
-              </ul>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順① Obsidian をインストール</h5>
-              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li>公式サイトから OS に合ったインストーラをダウンロード</li>
-                <li>普通にインストール（Mac は dmg、Windows は exe）</li>
-                <li>起動すると「Create new vault」「Open folder as vault」を聞かれます</li>
-              </ol>
-              <div class="cmd-row" style="margin-top:12px">
-                <span class="cmd-text">https://obsidian.md/</span>
-                <a href="https://obsidian.md/" target="_blank" rel="noopener" class="cmd-link" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">サイトを開く ↗</a>
-              </div>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順② Vault（金庫）を作る</h5>
-              <p style="margin-top:8px;font-size:13.5px;line-height:1.7;color:var(--ink-soft)">Vault は、自分のメモを全部置いておくフォルダのことです。Claude Code との連携を考えるなら、ホームディレクトリ直下の <code>~/MyVault</code> のように<strong style="color:var(--ink)">パスがシンプルな場所</strong>に作るのがオススメです。</p>
-              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li>Obsidian 起動時の画面で「<strong>Create new vault</strong>」をクリック</li>
-                <li>Vault name に「<code>MyVault</code>」と入力</li>
-                <li>Location は「<code>~/</code>」（ホームディレクトリ）を選んで「<strong>Create</strong>」</li>
-                <li>これで <code>~/MyVault</code> という空の Vault ができます</li>
-              </ol>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順③ おすすめのフォルダ構成</h5>
-              <p style="margin-top:8px;font-size:13.5px;line-height:1.7;color:var(--ink-soft)">Vault の中身は自由に設計できますが、AI に読ませる前提なら、<strong style="color:var(--ink)">「役割で分ける」</strong>のが基本です。下記は世界の Claude Code ユーザーが使っている代表的な構成です。</p>
-              <div style="margin-top:10px;padding:14px 18px;background:var(--ink);color:var(--cream);border-radius:3px;font-family:var(--mono);font-size:12.5px;line-height:1.7;overflow-x:auto;white-space:pre">~/MyVault/
-├── CLAUDE.md          ← Claude への取扱説明書（一番大事）
-├── 00-Inbox/          ← とりあえず何でもここに放り込む
-├── 01-Projects/       ← 期限のあるプロジェクト（〇〇新サービスなど）
-├── 02-Areas/          ← 継続的な責任領域（経理、人事、自分の健康…）
-├── 03-Resources/      ← いつか使う参考資料、フレームワーク
-└── 04-Archive/        ← もう動かないけど捨てたくないもの</div>
-              <p style="margin-top:10px;font-size:12.5px;color:var(--ink-faint);line-height:1.6">この5フォルダは「PARA メソッド」と呼ばれる定番の整理術です。<strong style="color:var(--ink-soft)">迷ったら 00-Inbox に置く</strong>運用にすると、毎回どこに置くか考えずに済みます。</p>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順④ <code>CLAUDE.md</code> を Vault のルートに置く</h5>
-              <p style="margin-top:8px;font-size:13.5px;line-height:1.7;color:var(--ink-soft)"><code>CLAUDE.md</code> は <strong style="color:var(--ink)">Claude Code への取扱説明書</strong>です。Vault のフォルダ構成・あなたのこと・お願いしたい仕事のスタイルを書いておくと、<strong style="color:var(--ink)">Claude Code はそれを「最初に必ず読む」設計</strong>になっています。下のプロンプトをそのまま Code に渡せば、Vault に合った <code>CLAUDE.md</code> を作って書き込んでくれます。</p>
-
-              <div class="scene-note" style="margin-top:14px">
-                <span class="scene-label">Setup Prompt</span>
-                Vault のディレクトリで <code>claude</code> を立ち上げ（<code>cd ~/MyVault && claude</code>）、下のプロンプトをそのまま貼ってください。質問形式で必要な情報を聞いてくれて、最後に <code>CLAUDE.md</code> を書き込みます。
-              </div>
-              <div class="prompt">
-                <div class="prompt-head">
-                  <span class="prompt-label"><span class="kind">HOMEWORK</span>CLAUDE.md を作る / Obsidian Vault 用</span>
-                  <button class="copy-btn" data-copy="p-17-obs-claudemd">Copy</button>
-                </div>
-                <div class="prompt-body" id="p-17-obs-claudemd">この Vault を、私の「セカンドブレイン」として Claude Code から使いたい。
-そのために、Vault のルートに置く CLAUDE.md を一緒に作ってほしい。
-
-## やってほしいこと
-
-### Step 1: ヒアリング
-
-以下を私に質問してください(1問ずつ、私が答えたら次へ):
-
-1. 私の主な業務や役割
-2. このVaultで一番扱いたいテーマ(例:仕事、学習、健康、副業…)
-3. 1日の仕事の流れ(朝・日中・夜の使い方)
-4. 文体の好み(です・ます / だ・である / 箇条書きが多い / 図解多め など)
-5. Claudeに「これだけは守ってほしい」ルール(例:勝手にWebに公開しない、長文を要約せず保存する等)
-
-### Step 2: フォルダ構成の確認
-
-このVaultのフォルダ構成をls等で確認し、各フォルダの想定用途を私に確認してください。
-PARAメソッド(Projects/Areas/Resources/Archive + Inbox)を私が使っているなら、それを反映してください。
-
-### Step 3: CLAUDE.md のドラフトを書く
-
-以下を含む CLAUDE.md を Vault ルートに作成してください:
-
-- # このVaultについて(1〜2行)
-- ## 私について(ヒアリング結果)
-- ## フォルダ構成と用途(ツリー + 各フォルダの説明)
-- ## ファイル命名規則(kebab-case、日付は YYYY-MM-DD など)
-- ## frontmatter テンプレート(date / tags / status / type)
-- ## 文体・回答スタイル
-- ## 毎朝のオープニング(朝起動時の挙動)
-- ## 毎夜のクロージング(終了時に振り返るチェックリスト)
-- ## Claudeに守ってほしいルール
-
-書く前に、構成案を私に見せて、私の OK を取ってから書き込んでください。
-
-### Step 4: 動作確認
-
-書き終わったら、新しい質問を1つ受けて、CLAUDE.md の内容に沿って答えてみてください。
-動きが想定と違ったら、その場で CLAUDE.md を直していきます。
-
-## 重要
-
-- Vault の中以外のファイルには触らないでください
-- すでに CLAUDE.md がある場合は、上書きせず一度内容を読んで、私に「上書きする / 追記する / 別名で保存する」を選ばせてください
-- 500行を超えないようにスリムに保ってください。詳細は別ファイル(例: ./Skills/writing-style.md)に分けてリンクを貼る方針で。
-
-それでは Step 1 から始めてください。</div>
-              </div>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順⑤ Claude Code を Vault に向ける</h5>
-              <p style="margin-top:8px;font-size:13.5px;line-height:1.7;color:var(--ink-soft)">これは毎日やる動作です。<strong style="color:var(--ink)">Vault のフォルダに <code>cd</code> してから <code>claude</code></strong>。それだけで、Claude Code は <code>CLAUDE.md</code> を自動で読み込み、あなたの「いつもの自分」として起動します。</p>
-              <div class="cmd-row" style="margin-top:10px">
-                <span class="cmd-text">cd ~/MyVault &amp;&amp; claude</span>
-                <button class="cmd-copy" data-cmd="cd ~/MyVault &amp;&amp; claude" aria-label="コマンドをコピー">コマンドをコピー</button>
-              </div>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">毎日使う 3 つのプロンプト</h5>
-              <p style="margin-top:8px;font-size:13.5px;line-height:1.7;color:var(--ink-soft)">CLAUDE.md ができたら、あとは毎日この 3 つを使うだけ。Vault が育っていけば、Claude も賢くなっていきます。</p>
-
-              <div class="prompt" style="margin-top:14px">
-                <div class="prompt-head">
-                  <span class="prompt-label"><span class="kind">MORNING</span>おはようプロトコル / 朝に投げる</span>
-                  <button class="copy-btn" data-copy="p-17-obs-morning">Copy</button>
-                </div>
-                <div class="prompt-body" id="p-17-obs-morning">おはよう。今日の日付を確認して、CLAUDE.md と Vault を読んで、今日の私を立ち上げてほしい。
-
-具体的には:
-
-1. 今日の日付(YYYY-MM-DD)を教えて
-2. 01-Projects/ を見て、いま動いているプロジェクトを一覧
-3. 02-Areas/ から、今日触れるべき継続テーマがあれば教えて
-4. 昨日の日付のメモ(例: 03-Resources/Daily/2026-05-10.md など)があれば、未完了タスクを抜き出して
-5. 今日の Daily ノートを作って、上記を引き継いだ状態にして
-6. 最後に、今日いちばん最初にやるべきことを1つ提案して
-
-20秒くらいで終わる軽い起動でOKです。</div>
-              </div>
-
-              <div class="prompt">
-                <div class="prompt-head">
-                  <span class="prompt-label"><span class="kind">DURING</span>知識を引き出す / 作業中に投げる</span>
-                  <button class="copy-btn" data-copy="p-17-obs-query">Copy</button>
-                </div>
-                <div class="prompt-body" id="p-17-obs-query">Vault の中から、◯◯ に関連するメモを横断して読み込んで、以下に答えて:
-
-## 質問
-(ここに質問を書く。例:「先月の発注先について、決定理由を時系列で整理して」)
-
-## 進め方
-
-1. まず Vault 全体を ◯◯ に関連するキーワードで検索して、ヒットしたファイルを列挙
-2. それぞれのファイルの該当部分を読んで、要点をまとめる
-3. 矛盾する記述があれば、それも報告して
-4. 最後に、「次に Vault に追加すべきメモ」があれば提案して
-
-Vault 外のWeb情報は今回は使わなくてOKです。
-私自身のメモだけを根拠に答えてください。</div>
-              </div>
-
-              <div class="prompt">
-                <div class="prompt-head">
-                  <span class="prompt-label"><span class="kind">EVENING</span>クロージングプロトコル / 終業時に投げる</span>
-                  <button class="copy-btn" data-copy="p-17-obs-evening">Copy</button>
-                </div>
-                <div class="prompt-body" id="p-17-obs-evening">今日もありがとう。1日の振り返りをして、Vault にちゃんと書き込んでおいてほしい。
-
-以下を1問ずつ聞いてください。私の回答をその場で Daily ノートに追記していってください。
-
-1. 今日、完了したことは?
-2. 覚えておくべき発見・気づきは?(これは別途 03-Resources/ に切り出すか確認して)
-3. 明日のいちばん最初のタスクは?
-4. 明日のあなた(=次のClaude Codeセッション)に申し送りたい context は?
-5. 今日の進め方で、再利用できそうなパターンがあった?(あれば Skills/ に新しいスキルファイルとして提案)
-
-最後に:
-- 今日の Daily ノートを保存
-- 重要な発見は 03-Resources/ に新規ファイルとして書き出し(私の承認を取って)
-- Skills/ に追加すべきものがあれば、ファイル名と内容案を提示
-
-これで今日は終わりです。お疲れさまでした。</div>
-              </div>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">記憶が引き継がれる仕組み（なぜこれが効くのか）</h5>
-              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li><strong style="color:var(--ink)">Claude Code は <code>CLAUDE.md</code> を毎セッション必ず読む</strong>仕様です。これが「あなた専用の初期化スクリプト」になります。</li>
-                <li>Vault の中の <code>.md</code> ファイルは、Claude が必要に応じて読み込むので、<strong style="color:var(--ink)">「説明しなくても見にいける」状態</strong>が常に維持されます。</li>
-                <li>Claude が新しい学びを <code>.md</code> として書き込むと、<strong style="color:var(--ink)">次回からはそれも前提知識に加わります</strong>。知識が「複利」で蓄積されます。</li>
-                <li>Vault は単なるフォルダなので、<strong style="color:var(--ink)">別の PC にも持ち運べる</strong>し（iCloud / Dropbox 同期も可）、Claude 以外の AI にも同じ Vault を読ませられます。<strong style="color:var(--ink)">ロックインがありません</strong>。</li>
-              </ol>
-
-              <div style="margin-top:18px;padding:14px 18px;background:var(--cream-deep);border-radius:3px;font-size:12.5px;line-height:1.65;color:var(--ink-soft)">
-                <strong style="color:var(--ink)">コツ:</strong> 最初から完璧な構成を目指さず、<strong>1週間 00-Inbox に書き溜めるだけ</strong>でも価値が出ます。「クロージングプロトコル」を毎日回して、Claude に勝手に整理してもらうほうが続きます。
-              </div>
-
-              <p style="margin-top:18px;font-size:13px"><a href="https://obsidian.md/" target="_blank" rel="noopener" style="color:var(--orange-dark);text-decoration:none;border-bottom:1px solid var(--orange-soft);font-family:var(--mono);letter-spacing:.02em">obsidian.md ↗</a></p>
-            </div>
-
-            <div class="s-section">
-              <h4>ECC (Everything Claude Code) — ご自宅で試す用</h4>
-              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft)">ECC は、Claude Code を <strong style="color:var(--ink)">サブエージェント / スラッシュコマンド / カスタムフック / MCP連携</strong> などで拡張するためのキットです。「これ便利だな」を増やしていける土台になります。当日は URL のご案内とコンセプトのみで、<strong style="color:var(--ink)">実際の導入はご自宅でお試しください</strong>。</p>
-              <p style="font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin-top:10px">導入のときは <strong style="color:var(--ink)">Claude Code 本人に手伝ってもらう</strong>のが一番ラクです。下のプロンプトを Code に渡せば、README の理解 → 依存関係チェック → インストール計画 → 実行 → 動作確認まで一気通貫でやってくれます。</p>
-              <p style="margin-top:14px;font-size:13px"><a href="https://github.com/affaan-m/everything-claude-code" target="_blank" rel="noopener" style="color:var(--orange-dark);text-decoration:none;border-bottom:1px solid var(--orange-soft);font-family:var(--mono);letter-spacing:.02em">github.com/affaan-m/everything-claude-code ↗</a></p>
-
-              <div class="scene-note" style="margin-top:18px">
-                <span class="scene-label">Homework</span>
-                帰宅後、ターミナルで <code>claude</code> を立ち上げて、下のプロンプトをそのまま貼り付けてください。各 Step で<strong>確認を取りながら進めるよう</strong>に書いてあるので、初めての方でも安全に試せます。
-              </div>
-              <div class="prompt">
-                <div class="prompt-head">
-                  <span class="prompt-label"><span class="kind">HOMEWORK</span>ECC セットアップ / Claude Code 用</span>
-                  <button class="copy-btn" data-copy="p-17-ecc">Copy</button>
-                </div>
-                <div class="prompt-body" id="p-17-ecc">github.com/affaan-m/everything-claude-code というリポジトリで紹介されている ECC (Everything Claude Code) を、私の環境にセットアップしてほしい。
-
-## 私の状況
-
-- Mac ユーザー(Windows の方は適宜読み替えてください)
-- Claude Code はインストール済み
-- 業務効率化のために、Code を拡張したい
-
-## やってほしいこと
-
-### Step 1: README を読む
-
-まず https://github.com/affaan-m/everything-claude-code の README を読んで、以下を整理してください:
-- ECC とは何か / 何をするツールか
-- 含まれている機能(サブエージェント、スラッシュコマンド、フック、MCP など)
-- セットアップに必要な依存関係
-- 推奨インストール手順
-- 動作確認の方法
-
-→ 整理して報告してください。
-
-### Step 2: 依存関係チェック
-
-私の環境で、ECC のセットアップに不足しているものをチェックしてください。
-- 必須ツール(git、Node.js などがあれば)
-- 推奨ツール
-- 既存の `~/.claude/` ディレクトリの状態と、上書きされそうな箇所
-
-→ 不足や注意点があれば教えてください。
-
-### Step 3: インストール計画
-
-セットアップ計画を立てて、私に承認を求めてください。
-- 何を、どの順番でインストール / 配置するか
-- 既存の Claude Code 設定への影響(.claude ディレクトリの扱い、バックアップの取り方)
-- 想定所要時間
-- リスクや戻し方
-
-→ 私が「OK」と言ったら次へ。
-
-### Step 4: インストール実行
-
-承認後、計画通りにセットアップしてください。
-- 各ステップ完了時に進捗を報告
-- パスワード等が必要な場合は、私に教えてください
-- 既存ファイルを上書きする前に、必ずバックアップを取る
-
-### Step 5: 動作確認
-
-簡単なテスト(任意のスラッシュコマンドやサブエージェント呼び出し)で動作確認してください。
-うまく動かない箇所があれば、原因と対処案を一緒に提示してください。
-
-→ 結果を報告。
-
-## 重要
-
-- 各 Step で必ず私の確認を取ってください
-- 既存の Claude Code 設定を上書きする場合は、必ず事前に警告
-- エラーが出たら止まって相談
-
-それでは Step 1 から開始してください。</div>
-              </div>
             </div>
 
             <div class="s-section">
