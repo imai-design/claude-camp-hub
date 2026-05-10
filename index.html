@@ -2635,25 +2635,168 @@ Step 2 で抽出した情報を元に、以下の項目を入力してくださ�
             <div class="s-section">
               <h4>講師実演(15分) — 多機能版を Code に作らせる</h4>
               <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">講師は<strong style="color:var(--ink)">多機能版</strong>を Code に作らせて、皆さんにお見せします。月額給与・対象月・入社/退社日・休職期間・有給・各種手当などを盛り込んだ HTML ファイルとして完成します。localStorage 履歴と CSV/PDF エクスポート機能つきです。</p>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                中小企業の人事・経理担当を想定したユーザーに、<strong>業務利用に耐える日割り計算ツール</strong>を Code が一気に作り上げる場面です。「方針提案 → 承認 → 段階的実装」の流れと、localStorage 履歴・CSV/PDF エクスポートまで含む完成度がポイントです。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">DEMO</span>講師実演 / 15:00</span>
+                  <button class="copy-btn" data-copy="p-15-demo">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-15-demo">日割り給与計算ツールを HTML ファイルとして作ってほしい。
+
+## 想定するユーザー
+
+- 中小企業の人事・経理担当
+- 毎月、入社・退社・休職などで日割り計算が必要
+- 紙の電卓やExcel手作業に時間がかかっている
+
+## 機能要件(多機能版)
+
+### 入力項目
+
+1. **基本情報**
+   - 月額給与(円)
+   - 対象月(YYYY/MM)
+
+2. **稼働日数の特定**
+   - 開始日(入社日 or 月初)
+   - 終了日(退社日 or 月末)
+   - 休職期間(あれば、複数期間対応)
+
+3. **追加要素**
+   - 有給休暇取得日数(プラス計算)
+   - 各種手当(交通費、家族手当など、定額/日割り選択可)
+
+### 計算ロジック
+
+- 営業日ベース or 暦日ベースを選択可能
+- 月の営業日数を自動計算
+- 休職期間は給与から除外
+- 有給は通常勤務として計算
+- 手当は項目ごとに「全額支給」「日割り支給」を選択
+
+### 出力
+
+- 日割り給与(円)
+- 各種手当の支給額
+- 合計支給額
+- 計算過程の透明性(なぜこの金額になったか説明)
+- 計算結果を CSV または PDF で保存できる
+
+## デザイン要件
+
+- 業務システムっぽい、信頼感のある UI
+- 入力項目が多いので、グルーピングして見やすく
+- スマホでも使えるレスポンシブ対応
+- 計算結果は強調表示
+
+## 進め方
+
+1. まずファイル構成と HTML/CSS/JS の方針を立てて見せてください
+2. 私が承認したら実装を開始
+3. 段階的に進めて、節目で見せてください
+4. localStorage で過去の計算履歴を保存できるとなお良い
+
+## 完了条件
+
+- ブラウザで開いて動作する HTML ファイル(単一ファイルでOK)
+- すべての機能要件を満たしている
+- 計算ロジックが正しい
+- 見た目が業務利用に耐える品質
+
+それでは、まずファイル構成と方針の提案からお願いします。</div>
+              </div>
             </div>
 
             <div class="s-section">
               <h4>実習①(20分) — プランモードでシンプル版を作成</h4>
               <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">参加者の皆さんは <strong style="color:var(--ink)">シンプル版</strong>(月額 + 営業日数 + 出勤日数 → 日割り給与)を、プランモードで実装します。<strong style="color:var(--ink)">Code 内で対話形式</strong>(計画提示 → 承認 → 実装)で進めます。</p>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                ご自身の手で「自分だけのツール」を作る体験です。HTML ファイルは出力せず、<strong>Code 内で対話的に使えるツール</strong>として実装することで、プランモードの「計画 → 承認 → 実装」のリズムを掴みます。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE A</span>プランモードでシンプル版 / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-15-a">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-15-a">プランモードで進めてほしい。
+日割り給与を計算するシンプルなツールを作りたい。
+
+## ツールの仕様(シンプル版)
+
+### 入力
+
+- 月額給与(円)
+- 月の営業日数(例:20日)
+- 出勤日数(例:15日)
+
+### 出力
+
+- 日割り給与(円)
+- 計算式の説明
+
+## 形式
+
+- HTML ファイルじゃなく、Claude Code 内で対話形式で動くツール
+- 私が「計算して」と頼んだら、Code が必要な情報を聞いて、計算結果を返す
+- スクリプトを書いて保存してもいい(その場合は使い方も教えて)
+
+## 進め方
+
+1. まずプランモードで、どういう手順で作るか提案して
+2. 私が承認したら実装
+3. 動作確認
+
+それではプランモードでお願いします。</div>
+              </div>
             </div>
 
             <div class="s-section">
-              <h4>実習②(20分) — 当日の進捗で講師が判断</h4>
-              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">複数候補から、参加者の状況を見て講師が選びます。</p>
-              <ul class="can-list" style="margin-top:8px">
-                <li><span class="mark" style="color:var(--orange-dark)">A</span><span>自分の業務での使いどころを Claude とブレスト</span></li>
-                <li><span class="mark" style="color:var(--orange-dark)">B</span><span>機能拡張(休職対応、有給、手当など)</span></li>
-                <li><span class="mark" style="color:var(--orange-dark)">C</span><span>別のツールを 1 つ作ってみる</span></li>
-              </ul>
-            </div>
+              <h4>実習②(20分) — 自由応用 / ブレスト</h4>
+              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">作ったツールを起点に、ご自身の業務でどう使えるかを Claude とブレストします。応用案を 3 つに絞り、選んだ 1 つの雛形までその場で作ります。</p>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                「自分の業務へ持ち帰る」最終仕上げです。Claude を<strong>業務パートナー</strong>として使い、応用アイデアの幅出し → 絞り込み → 雛形作成までを一気に。最後に「自分の業務に効く 1 つの種」を持ち帰る時間です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE B</span>自由応用 / ブレスト / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-15-b">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-15-b">さっき作った日割り給与計算ツール、自分の業務でどう使えるか考えてみたい。
+あなたとブレストして、3つくらいアイデアを出してほしい。
 
-            <div class="callout placeholder">
-              <strong>プロンプト本文は本番までに用意。</strong> 完成次第ここに掲載されます。
+## やってほしいこと
+
+### Step 1:私の状況を聞く
+
+私の業務内容を簡単に教えるので、それを踏まえて以下を提案してください:
+- ツールを応用できそうな業務パターン
+- 既存ツールの計算ロジックを応用できる場面
+- 新たに作るべき別ツールのアイデア
+
+### Step 2:アイデアを3つに絞る
+
+幅広く出してから、「特にこれが使えそう」を3つピックしてください。
+
+### Step 3:1つを選んで雛形を作る
+
+私が3つの中から1つを選んだら、その雛形をプランモードで提案 → 実装してください。
+
+## 私の業務(自由に書く)
+
+(ここに自分の業務を書いてください)
+
+例:
+- 「経理の月次処理を担当している」
+- 「フリーランスで複数案件を管理している」
+- 「営業職、案件のステータス管理がExcel」
+
+それでは Step 1 から始めてください。</div>
+              </div>
             </div>
           </div>
         </div>
