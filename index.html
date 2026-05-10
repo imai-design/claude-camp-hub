@@ -1,0 +1,2723 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Claude入門 1日キャンプ — 2026年5月11日 参加者用ハブ">
+<title>Claude入門 1日キャンプ / 2026.05.11 — 参加者ハブ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     Tokens
+     ========================================================= */
+  :root{
+    --orange: #D97757;
+    --orange-dark: #B85A40;
+    --orange-soft: #F0C7B3;
+    --cream: #FDF6F2;
+    --cream-deep: #F5EBE2;
+    --ink: #2A2A2A;
+    --ink-soft: #5C5650;
+    --ink-faint: #8A847E;
+    --line: #E8E0D8;
+    --line-soft: #F0E9E2;
+    --white: #FFFFFF;
+    --black: #1F1F1F;
+    --green: #6B8E5A;
+    --green-soft: #C9D6BE;
+
+    --serif: "Fraunces", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --max: 980px;
+    --gutter: clamp(20px, 4vw, 56px);
+
+    --shadow-sm: 0 1px 2px rgba(42,42,42,.04), 0 2px 8px rgba(42,42,42,.04);
+    --shadow-md: 0 2px 6px rgba(42,42,42,.06), 0 12px 30px rgba(42,42,42,.06);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    font-feature-settings: "palt";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* paper-like grain (very subtle) */
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.85  0 0 0 0 0.78  0 0 0 0 0.7  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-attachment: fixed;
+  }
+
+  ::selection{background: var(--orange); color: var(--white)}
+  a{color: inherit}
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* =========================================================
+     Hero
+     ========================================================= */
+  .hero{
+    background: var(--black);
+    color: var(--cream);
+    padding: clamp(36px, 7vw, 72px) 0 clamp(48px, 8vw, 96px);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      radial-gradient(60% 40% at 85% 10%, rgba(217,119,87,.18), transparent 60%),
+      radial-gradient(40% 30% at 10% 90%, rgba(217,119,87,.10), transparent 70%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative}
+
+  .hero-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--orange-soft);
+    padding-bottom: clamp(36px, 6vw, 72px);
+    border-bottom: 1px solid rgba(253,246,242,.12);
+  }
+  .hero-meta .dot{
+    display:inline-block;width:6px;height:6px;border-radius:50%;
+    background: var(--orange);
+    margin-right:8px;vertical-align:middle;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.4;transform:scale(.85)}
+  }
+
+  .hero-eyebrow{
+    margin-top: clamp(28px, 5vw, 48px);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .hero h1{
+    font-family: var(--serif);
+    font-weight: 360;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    font-size: clamp(40px, 9vw, 88px);
+    line-height: 1.02;
+    letter-spacing: -.01em;
+    margin-top: 14px;
+    color: var(--cream);
+  }
+  .hero h1 em{
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    color: var(--orange);
+  }
+
+  .hero-tagline{
+    margin-top: clamp(20px, 4vw, 32px);
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(18px, 2.6vw, 22px);
+    line-height: 1.5;
+    color: rgba(253,246,242,.78);
+    max-width: 30ch;
+  }
+
+  .hero-grid{
+    margin-top: clamp(40px, 7vw, 64px);
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(253,246,242,.12);
+  }
+  .hero-grid .label{
+    display:block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+  .hero-grid .val{
+    font-family: var(--serif);
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--cream);
+    line-height: 1.4;
+  }
+  @media (max-width: 560px){
+    .hero-grid{grid-template-columns: 1fr 1fr; gap: 20px 16px}
+    .hero-grid > div:nth-child(3){grid-column: 1/-1}
+  }
+
+  /* =========================================================
+     Now bar
+     ========================================================= */
+  .now-bar{
+    background: var(--orange);
+    color: var(--white);
+    border-top: 1px solid rgba(0,0,0,.05);
+    border-bottom: 1px solid rgba(0,0,0,.05);
+  }
+  .now-bar .wrap{
+    padding-top: 18px; padding-bottom: 18px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+  }
+  .now-bar .now-left{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .now-bar .now-pill{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.18);
+    padding: 5px 9px;
+    border-radius: 2px;
+  }
+  .now-bar .now-title{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(17px, 2.4vw, 22px);
+  }
+  .now-bar .now-time{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .1em;
+    opacity: .9;
+  }
+  .now-bar a.now-jump{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.4);
+    padding-bottom: 2px;
+    transition: border-color .2s;
+  }
+  .now-bar a.now-jump:hover{border-color: var(--white)}
+
+  /* =========================================================
+     Section
+     ========================================================= */
+  section{padding: clamp(56px, 9vw, 96px) 0}
+  .section-head{margin-bottom: clamp(28px, 5vw, 48px)}
+  .section-eyebrow{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+    margin-bottom: 12px;
+  }
+  .section-title{
+    font-family: var(--serif);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -.005em;
+  }
+  .section-title em{
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    color: var(--orange);
+  }
+  .section-lede{
+    margin-top: 12px;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    font-size: 15px;
+  }
+
+  /* =========================================================
+     Schedule timeline
+     ========================================================= */
+  .timeline{
+    border-top: 1px solid var(--line);
+  }
+  .tl-row{
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    gap: 20px;
+    align-items: start;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: padding-left .25s ease, background .25s ease;
+  }
+  .tl-row:hover{
+    padding-left: 12px;
+    background: linear-gradient(to right, var(--cream-deep), transparent 80%);
+  }
+  .tl-row .tl-time{
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: .04em;
+    color: var(--ink);
+    padding-top: 4px;
+  }
+  .tl-row .tl-time .end{
+    display:block;
+    color: var(--ink-faint);
+    font-size: 11px;
+    margin-top: 2px;
+  }
+  .tl-row .tl-body{padding-top: 2px}
+  .tl-row .tl-title{
+    font-family: var(--serif);
+    font-weight: 420;
+    font-size: clamp(20px, 2.8vw, 26px);
+    line-height: 1.25;
+    letter-spacing: -.005em;
+  }
+  .tl-row .tl-sub{
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .tl-row .tl-badge{
+    align-self: start;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 5px 9px;
+    background: var(--cream-deep);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  /* badge variants */
+  .badge-hook{background: var(--orange); color: var(--white); border-color: var(--orange)}
+  .badge-useful{background: var(--green-soft); color: #3F5733; border-color: var(--green-soft)}
+  .badge-wow{background: var(--orange-dark); color: var(--white); border-color: var(--orange-dark)}
+  .badge-takeaway{background: var(--ink); color: var(--cream); border-color: var(--ink)}
+  .badge-prep{background: var(--cream-deep); color: var(--ink-soft); border-color: var(--line)}
+  .badge-break{background: transparent; color: var(--ink-faint); border-style: dashed}
+
+  /* current session highlight */
+  .tl-row.is-now{
+    background: linear-gradient(to right, rgba(217,119,87,.07), transparent 70%);
+    padding-left: 16px;
+  }
+  .tl-row.is-now::before{
+    content:"";
+    position:absolute;left:0;top:0;bottom:0;
+    width: 3px;
+    background: var(--orange);
+  }
+  .tl-row.is-now .tl-time::after{
+    content: "NOW";
+    display:inline-block;
+    margin-left: 6px;
+    font-size: 9px;
+    letter-spacing: .2em;
+    background: var(--orange);
+    color: var(--white);
+    padding: 2px 6px;
+    border-radius: 2px;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 560px){
+    .tl-row{grid-template-columns: 64px 1fr; row-gap: 8px}
+    .tl-row .tl-badge{grid-column: 2; justify-self: start; margin-top: 4px}
+  }
+
+  /* =========================================================
+     Session cards
+     ========================================================= */
+  .sessions-list{
+    display: flex; flex-direction: column;
+    border-top: 1px solid var(--line);
+  }
+
+  details.session{
+    border-bottom: 1px solid var(--line);
+    background: var(--white);
+    transition: background .2s ease;
+  }
+  details.session[open]{
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  details.session > summary{
+    list-style: none;
+    cursor: pointer;
+    padding: 26px clamp(20px, 3vw, 36px);
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 18px;
+    align-items: center;
+  }
+  details.session > summary::-webkit-details-marker{display:none}
+  details.session > summary:hover{background: var(--cream-deep)}
+
+  .s-num{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    color: var(--ink-faint);
+    align-self: start;
+    padding-top: 6px;
+    min-width: 36px;
+  }
+  .s-main .s-time{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .08em;
+    color: var(--orange-dark);
+    margin-bottom: 4px;
+  }
+  .s-main .s-title{
+    font-family: var(--serif);
+    font-weight: 420;
+    font-size: clamp(20px, 2.8vw, 26px);
+    line-height: 1.25;
+  }
+  .s-main .s-tagline{
+    margin-top: 4px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .s-check{
+    display:flex;align-items:center;justify-content:center;
+    width: 28px;height: 28px;
+    border: 1.5px solid var(--line);
+    border-radius: 50%;
+    background: var(--white);
+    cursor: pointer;
+    transition: all .2s ease;
+    flex-shrink: 0;
+  }
+  .s-check:hover{border-color: var(--orange)}
+  .s-check svg{width: 14px; height: 14px; opacity: 0; transition: opacity .15s}
+  .s-check.checked{
+    background: var(--green); border-color: var(--green);
+  }
+  .s-check.checked svg{opacity: 1}
+
+  .s-caret{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    color: var(--ink-faint);
+    transition: transform .25s ease;
+    flex-shrink: 0;
+  }
+  details[open] .s-caret{transform: rotate(45deg); color: var(--orange)}
+
+  .s-body{
+    padding: 0 clamp(20px, 3vw, 36px) 36px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .s-body-inner{
+    padding-top: 28px;
+    display: grid;
+    gap: 28px;
+  }
+
+  .s-meta{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--cream);
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .s-meta .label{
+    display:block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .s-meta .val{
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.5;
+    word-break: break-all;
+  }
+  .s-meta a.val{
+    color: var(--orange-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--orange-soft);
+  }
+  .s-meta a.val:hover{border-bottom-color: var(--orange-dark)}
+
+  .s-section h4{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  /* Scene note (context above each prompt) */
+  .scene-note{
+    margin-bottom: 12px;
+    padding: 12px 16px 14px;
+    background: var(--cream);
+    border-left: 2px solid var(--orange-soft);
+    border-radius: 0 2px 2px 0;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .scene-note .scene-label{
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+    margin-right: 10px;
+    font-weight: 500;
+    vertical-align: 2px;
+  }
+  .scene-note strong{ color: var(--ink); font-weight: 500; }
+
+  /* Numbered setup list */
+  .setup-list{
+    list-style: none;
+    counter-reset: setupc;
+    margin-top: 8px;
+  }
+  .setup-list li{
+    counter-increment: setupc;
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .setup-list li:last-child{border-bottom: none}
+  .setup-list li::before{
+    content: counter(setupc, decimal-leading-zero);
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    color: var(--orange-dark);
+    padding-top: 3px;
+    width: 28px;
+  }
+  .setup-list li strong{color: var(--ink); font-weight: 500}
+  .setup-list code{
+    font-family: var(--mono);
+    background: var(--cream-deep);
+    padding: 1px 7px;
+    border-radius: 2px;
+    font-size: 12.5px;
+    color: var(--orange-dark);
+  }
+
+  /* Phase / flow list (for 14:00, 16:00, 17:00) */
+  .phase-list{
+    list-style: none;
+    margin-top: 8px;
+    counter-reset: phasec;
+  }
+  .phase-list .phase{
+    counter-increment: phasec;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .phase-list .phase:last-child{border-bottom: none}
+  .phase-list .phase::before{
+    content: "Phase " counter(phasec);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    padding-top: 5px;
+  }
+  .phase-list .phase .p-title{
+    font-family: var(--serif);
+    font-weight: 420;
+    font-size: 17px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .phase-list .phase .p-time{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    color: var(--ink-faint);
+    margin-left: 8px;
+  }
+  .phase-list .phase .p-body{
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 520px){
+    .phase-list .phase{grid-template-columns: 1fr; gap: 4px}
+  }
+
+  /* Two-column flow (Cowork side + Code side for 14:00) */
+  .flow-split{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  @media (max-width: 640px){.flow-split{grid-template-columns: 1fr}}
+  .flow-col{
+    padding: 18px;
+    background: var(--cream);
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .flow-col h5{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .flow-col ol{
+    list-style: none;
+    counter-reset: flowc;
+  }
+  .flow-col ol li{
+    counter-increment: flowc;
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .flow-col ol li::before{
+    content: counter(flowc);
+    flex-shrink: 0;
+    width: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+  .flow-bridge{
+    margin: 12px 0;
+    padding: 12px 16px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 4px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .flow-bridge strong{color: var(--orange)}
+
+  /* Closing speech card */
+  .closing-card{
+    margin-top: 8px;
+    padding: 28px 30px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 4px;
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.85;
+    position: relative;
+  }
+  .closing-card::before{
+    content: """;
+    position: absolute;
+    top: 8px; left: 14px;
+    font-family: var(--serif);
+    font-size: 64px;
+    color: var(--orange);
+    opacity: .25;
+    line-height: 1;
+  }
+  .closing-card p{margin-bottom: 14px}
+  .closing-card p:last-child{margin-bottom: 0}
+  .closing-card em{
+    font-style: italic;
+    color: var(--orange-soft);
+  }
+
+  /* Reflection questions block */
+  .reflect-block{
+    padding: 22px 26px;
+    background: var(--cream);
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    margin-top: 8px;
+  }
+  .reflect-block .r-eyebrow{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+    margin-bottom: 12px;
+  }
+  .reflect-block ol{
+    list-style: none;
+    counter-reset: refc;
+  }
+  .reflect-block ol li{
+    counter-increment: refc;
+    display: flex;
+    gap: 16px;
+    padding: 10px 0;
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .reflect-block ol li::before{
+    content: counter(refc);
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .reflect-block .r-foot{
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+
+  /* Prompt blocks */
+  .prompt{
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .prompt-head{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding: 12px 16px;
+    background: var(--cream-deep);
+    border-bottom: 1px solid var(--line);
+  }
+  .prompt-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .prompt-label .kind{
+    color: var(--ink-faint);
+    margin-right: 8px;
+  }
+  .copy-btn{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    background: var(--white);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 6px 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all .15s ease;
+    flex-shrink: 0;
+  }
+  .copy-btn:hover{border-color: var(--orange); color: var(--orange-dark)}
+  .copy-btn.copied{
+    background: var(--green); color: var(--white); border-color: var(--green);
+  }
+  .prompt-body{
+    padding: 16px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: var(--ink);
+    max-height: 360px;
+    overflow-y: auto;
+    background: var(--white);
+  }
+  .prompt-body::-webkit-scrollbar{width: 8px}
+  .prompt-body::-webkit-scrollbar-thumb{background: var(--line); border-radius: 4px}
+
+  /* Note callout */
+  .callout{
+    padding: 14px 18px;
+    background: rgba(217,119,87,.08);
+    border-left: 3px solid var(--orange);
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .callout strong{color: var(--orange-dark)}
+  .callout.placeholder{
+    background: var(--cream-deep);
+    border-left-color: var(--ink-faint);
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* =========================================================
+     Resources panel
+     ========================================================= */
+  .resource-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .resource{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px;
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s ease;
+    display: block;
+  }
+  .resource:hover{
+    border-color: var(--orange);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .resource .r-label{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+  .resource .r-name{
+    font-family: var(--serif);
+    font-weight: 420;
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .resource .r-desc{
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .resource .r-url{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--orange-dark);
+    word-break: break-all;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 12px;
+  }
+  .resource .r-arrow{
+    float: right;
+    font-family: var(--mono);
+    color: var(--orange);
+    font-size: 14px;
+    transition: transform .2s;
+  }
+  .resource:hover .r-arrow{transform: translate(3px, -3px)}
+
+  /* Login info card */
+  .login-card{
+    margin-top: 20px;
+    padding: 22px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .login-card .l-label{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--orange-soft);
+  }
+  .login-card .l-field .label{
+    display:block;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .login-card .l-field .val{
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--cream);
+    cursor: pointer;
+    border-bottom: 1px dashed rgba(253,246,242,.3);
+  }
+  .login-card .l-field .val:hover{border-bottom-color: var(--orange)}
+  .login-card .l-note{
+    grid-column: 1/-1;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(253,246,242,.12);
+    font-size: 12px;
+    color: rgba(253,246,242,.65);
+    line-height: 1.5;
+  }
+  @media (max-width: 640px){
+    .login-card{grid-template-columns: 1fr; gap: 16px}
+  }
+
+  /* =========================================================
+     Rules / Safety section (two columns)
+     ========================================================= */
+  .two-col{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 760px){.two-col{grid-template-columns: 1fr}}
+
+  .rule-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+  }
+  .rule-card.dark{
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+  .rule-card .r-eyebrow{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .rule-card .r-title{
+    font-family: var(--serif);
+    font-weight: 420;
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -.005em;
+  }
+  .rule-card p{
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .rule-card.dark p{color: rgba(253,246,242,.78)}
+  .rule-card blockquote{
+    margin: 16px 0;
+    padding: 16px 20px;
+    background: var(--cream);
+    border-left: 3px solid var(--orange);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .rule-card.dark blockquote{
+    background: rgba(253,246,242,.06);
+    border-left-color: var(--orange);
+    color: var(--cream);
+  }
+
+  .can-list{list-style: none; margin-top: 12px}
+  .can-list li{
+    display: flex; gap: 10px; align-items: baseline;
+    padding: 6px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .can-list .mark{
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-weight: 600;
+    width: 18px;
+  }
+  .can-list .yes{color: var(--green)}
+  .can-list .no{color: var(--orange-dark)}
+
+  /* date prompt callout */
+  .date-rule{
+    margin-top: 24px;
+    padding: 22px;
+    background: var(--orange);
+    color: var(--white);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .date-rule::before{
+    content: "★";
+    position: absolute;
+    top: -10px; right: 14px;
+    font-size: 80px;
+    color: rgba(255,255,255,.12);
+    line-height: 1;
+  }
+  .date-rule .label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: .85;
+  }
+  .date-rule .title{
+    font-family: var(--serif);
+    font-weight: 420;
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .date-rule .body{
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: .95;
+  }
+  .date-rule code{
+    font-family: var(--mono);
+    background: rgba(0,0,0,.18);
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 12.5px;
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  /* =========================================================
+     Footer
+     ========================================================= */
+  footer{
+    background: var(--black);
+    color: var(--cream);
+    padding: clamp(48px, 7vw, 80px) 0 clamp(36px, 5vw, 56px);
+    margin-top: clamp(48px, 7vw, 80px);
+  }
+  footer .f-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(253,246,242,.12);
+  }
+  footer h3{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  footer p{font-size: 14px; line-height: 1.7; color: rgba(253,246,242,.78)}
+  footer .f-bottom{
+    margin-top: 24px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  footer .f-bottom em{
+    font-style: italic;
+    font-family: var(--serif);
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--orange-soft);
+    font-size: 13px;
+  }
+  @media (max-width: 560px){
+    footer .f-grid{grid-template-columns: 1fr}
+  }
+
+  /* =========================================================
+     Misc
+     ========================================================= */
+  .toast{
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: var(--cream);
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .1em;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .25s ease;
+    z-index: 100;
+    box-shadow: var(--shadow-md);
+  }
+  .toast.show{opacity: 1; transform: translateX(-50%) translateY(0)}
+
+  /* progress bar in hero */
+  .progress-strip{
+    margin-top: 24px;
+    display: flex; gap: 4px;
+    height: 6px;
+  }
+  .progress-strip .pcell{
+    flex: 1;
+    background: rgba(253,246,242,.1);
+    border-radius: 1px;
+    transition: background .3s;
+  }
+  .progress-strip .pcell.done{background: var(--orange)}
+
+  /* print */
+  @media print{
+    .now-bar, .copy-btn, footer{display: none}
+    body{background: white}
+    details.session{break-inside: avoid; page-break-inside: avoid}
+    details.session > summary{cursor: default}
+    details.session{open: open}
+    .prompt-body{max-height: none; overflow: visible}
+  }
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-meta">
+      <span><span class="dot"></span>2026.05.11 · MONDAY · 9:00–18:00 JST</span>
+      <span>Vol. 01 / Hosted by ホリエモンAI学校</span>
+    </div>
+
+    <div class="hero-eyebrow">Today You Build</div>
+    <h1>Claude入門<br>1日<em>キャンプ</em>。</h1>
+    <p class="hero-tagline">
+      AIに「やってもらう」を、その手で。<br>
+      帰ってすぐ使える効率化を、<br>最低ひとつ、この場で完成させましょう。
+    </p>
+
+    <div class="hero-grid">
+      <div>
+        <span class="label">Date</span>
+        <span class="val">2026年 5月 11日(月)</span>
+      </div>
+      <div>
+        <span class="label">Format</span>
+        <span class="val">Zoom · 9:00–18:00</span>
+      </div>
+      <div>
+        <span class="label">Instructor</span>
+        <span class="val">今井 / imai-design</span>
+      </div>
+    </div>
+
+    <div class="progress-strip" id="progressStrip" aria-label="本日の進捗"></div>
+  </div>
+</header>
+
+<!-- =========================================================
+     NOW BAR
+     ========================================================= -->
+<div class="now-bar" id="nowBar">
+  <div class="wrap">
+    <div class="now-left">
+      <span class="now-pill" id="nowPill">Loading…</span>
+      <span class="now-title" id="nowTitle">本日の進行を読み込み中</span>
+    </div>
+    <a href="#schedule" class="now-jump">Jump to Schedule →</a>
+  </div>
+</div>
+
+<!-- =========================================================
+     SCHEDULE TIMELINE
+     ========================================================= -->
+<section id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">— Section 01 / The Day</div>
+      <h2 class="section-title">1日の<em>羅針盤</em>。</h2>
+      <p class="section-lede">迷ったらここに戻ってくれば大丈夫です。今いる場所を確認して、次のセッションへ進みましょう。各行をタップすると、詳細にジャンプします。</p>
+    </div>
+
+    <nav class="timeline" id="timeline">
+      <a class="tl-row" href="#sess-09" data-slot="09">
+        <div class="tl-time">09:00<span class="end">10:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">セットアップ</div>
+          <div class="tl-sub">資料配布 &amp; 必要アプリのインストール。午前を快適にするための準備時間。</div>
+        </div>
+        <span class="tl-badge badge-prep">準備</span>
+      </a>
+
+      <a class="tl-row" href="#sess-10" data-slot="10">
+        <div class="tl-time">10:00<span class="end">11:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">フリマ出品</div>
+          <div class="tl-sub">Claude Cowork でブラウザ操作を学びます。架空のフリマサイトに、いらないモノを出品します。</div>
+        </div>
+        <span class="tl-badge badge-hook">フック</span>
+      </a>
+
+      <a class="tl-row" href="#sess-11" data-slot="11">
+        <div class="tl-time">11:00<span class="end">12:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">ツール召喚</div>
+          <div class="tl-sub">Claude Code で PC内を操作します。YouTube のリンクから、PCに必要な機能を呼び出します。</div>
+        </div>
+        <span class="tl-badge badge-hook">フック</span>
+      </a>
+
+      <a class="tl-row" href="#sess-12" data-slot="12">
+        <div class="tl-time">12:00<span class="end">13:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">ランチ休憩</div>
+          <div class="tl-sub">午後に向けて、しっかり休みましょう。</div>
+        </div>
+        <span class="tl-badge badge-break">休憩</span>
+      </a>
+
+      <a class="tl-row" href="#sess-13" data-slot="13">
+        <div class="tl-time">13:00<span class="end">14:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">メール処理</div>
+          <div class="tl-sub">朝のメール処理を Claude に任せます。「今日の日付」をどう伝えるか、その作法も身につけます。</div>
+        </div>
+        <span class="tl-badge badge-useful">使える</span>
+      </a>
+
+      <a class="tl-row" href="#sess-14" data-slot="14">
+        <div class="tl-time">14:00<span class="end">15:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">発注 + 経費</div>
+          <div class="tl-sub">Cowork × Code の最強コラボです。Cowork で詰まったら Code に渡す、現実的な業務フローを学びます。</div>
+        </div>
+        <span class="tl-badge badge-wow">感動</span>
+      </a>
+
+      <a class="tl-row" href="#sess-15" data-slot="15">
+        <div class="tl-time">15:00<span class="end">16:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">日割り計算</div>
+          <div class="tl-sub">日割り計算ツールを、自分の手で作ります。「自分専用ツール」を持ち帰りましょう。</div>
+        </div>
+        <span class="tl-badge badge-useful">使える</span>
+      </a>
+
+      <a class="tl-row" href="#sess-16" data-slot="16">
+        <div class="tl-time">16:00<span class="end">17:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">ビジネス構想</div>
+          <div class="tl-sub">ビジネスを構想して、HPまで一気に作ります。アイデアを形にする一時間です。</div>
+        </div>
+        <span class="tl-badge badge-wow">感動</span>
+      </a>
+
+      <a class="tl-row" href="#sess-17" data-slot="17">
+        <div class="tl-time">17:00<span class="end">18:00</span></div>
+        <div class="tl-body">
+          <div class="tl-title">まとめ &amp; Q&amp;A</div>
+          <div class="tl-sub">自分のビジネスで使えるかを検討します。質疑応答を経て、明日からの一歩を持ち帰りましょう。</div>
+        </div>
+        <span class="tl-badge badge-takeaway">持ち帰り</span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<!-- =========================================================
+     SESSIONS DETAIL
+     ========================================================= -->
+<section id="sessions" style="background: var(--cream-deep); padding-top: clamp(56px, 9vw, 96px);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">— Section 02 / Field Notes</div>
+      <h2 class="section-title">セッション<em>詳細</em>。</h2>
+      <p class="section-lede">各セッションは、タップで展開します。プロンプトはコピーボタンで一発、サイトはリンクから新タブで開きます。チェックボックスで進捗を記録できます(自動保存)。</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="sessions-list">
+
+      <!-- =========== 09:00 SETUP =========== -->
+      <details class="session" id="sess-09" data-slot="09">
+        <summary>
+          <span class="s-num">01</span>
+          <div class="s-main">
+            <div class="s-time">09:00 — 10:00 / SETUP</div>
+            <div class="s-title">セットアップ</div>
+            <div class="s-tagline">資料配布 &amp; 必要アプリのインストール。今日のスタート地点を整えます。</div>
+          </div>
+          <button class="s-check" data-check="09" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <div class="s-meta">
+              <div><span class="label">Goal</span><span class="val">アプリ環境を整える</span></div>
+              <div><span class="label">Tools</span><span class="val">Claude Code(アプリ版)</span></div>
+              <div><span class="label">Default Model</span><span class="val"><code style="font-family:var(--mono);background:var(--cream-deep);padding:1px 8px;border-radius:2px;color:var(--orange-dark);font-size:12.5px">/model opusplan</code></span></div>
+            </div>
+
+            <div class="s-section">
+              <h4>全員でやる8ステップ</h4>
+              <ol class="setup-list">
+                <li><span>配布物(zip)をダウンロードして、<strong>解凍</strong>する</span></li>
+                <li>デスクトップに <code>claude-camp</code> フォルダを作成</li>
+                <li><strong>Claude アカウント</strong>を作成</li>
+                <li><strong>Pro 契約</strong>(クレジットカードが必要・当日案内します)</li>
+                <li><strong>Claude デスクトップアプリ</strong>をダウンロード &amp; インストール</li>
+                <li>デスクトップアプリにサインイン</li>
+                <li>Claude Code を起動確認 → <code>cd ~/Desktop/claude-camp</code> → <code>claude</code></li>
+                <li><strong>モデル指定</strong>:<code>/model opusplan</code> をデフォルトに設定</li>
+              </ol>
+            </div>
+
+            <div class="callout">
+              <strong>なぜ opusplan か:</strong> Plan モードは Opus(複雑な思考)、実装は Sonnet(速度)を自動で切り替えるモードです。コストを抑えつつ、パワーは落とさず使えます。今日の標準設定です。
+            </div>
+
+            <div class="s-section">
+              <h4>警告メッセージへの心得</h4>
+              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">セットアップ中、ログイン時などにブラウザや OS から警告が出ることがあります。<strong style="color:var(--ink)">今日のキャンプはすべてダミーサイト</strong>なので、表示された警告はすべて「承認」で進めて大丈夫です。詰まったら手を挙げてください。</p>
+            </div>
+
+            <div class="callout">
+              <strong>不安があったら今のうちに。</strong> インストールで詰まる方は、このセッション中に手を挙げてください。10:00以降は本編で巻き取ります。
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- =========== 10:00 フリマ出品 =========== -->
+      <details class="session" id="sess-10" data-slot="10">
+        <summary>
+          <span class="s-num">02</span>
+          <div class="s-main">
+            <div class="s-time">10:00 — 11:00 / HOOK</div>
+            <div class="s-title">フリマ出品 — Cowork でブラウザ操作</div>
+            <div class="s-tagline">架空のフリマサイト「モノパス」に、いらないモノを出品します。Cowork に「画面操作を任せる」初体験です。</div>
+          </div>
+          <button class="s-check" data-check="10" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <div class="s-meta">
+              <div><span class="label">Site</span><a class="val" href="https://imai-design.github.io/monopass/" target="_blank" rel="noopener">imai-design.github.io/monopass</a></div>
+              <div><span class="label">Tool</span><span class="val">Claude Cowork</span></div>
+              <div><span class="label">配分</span><span class="val">実演10分→実習①20分→解説5分→実習②20分→休憩5分</span></div>
+            </div>
+
+            <div class="s-section">
+              <h4>講師実演用プロンプト</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                講師が画面共有しながら「Cowork にブラウザ操作を任せると、こうなる」をお見せする場面です。<strong>1ステップごとに止めて報告させる</strong>ことで、操作の流れと「止め方」を参加者の皆さんに体感していただきます。注目していただきたいのは <strong>「1ステップごとに止まって報告」</strong>「想定外の画面が出たら勝手に進めず」の指示です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">DEMO</span>講師実演 / 10:00</span>
+                  <button class="copy-btn" data-copy="p-10-demo">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-10-demo">これからフリマサイト「モノパス」で架空の商品を出品する。1ステップごとに止まって、私に結果を報告してください。私は参加者に画面を見せながら解説します。
+
+## 出品する商品
+
+- タイトル:3年前に買って一度しか着ていないジャケット
+- カテゴリ:服・ファッション
+- 価格:相場をリサーチして、提案してください
+- 状態:目立った傷なし
+- 説明:Coworkが商品の魅力を考えて記載してください
+
+## ステップ1:サイトを開く
+
+ブラウザで以下のURLを開いてください。
+`https://imai-design.github.io/monopass/`
+
+ページが開けたら「ステップ1完了。サイトが開きました」と報告。
+
+## ステップ2:出品ページへ移動
+
+「出品する」ボタンを押して、出品フォームに移動してください。
+
+→ 「ステップ2完了。出品ページに来ました」と報告。
+
+## ステップ3:商品説明文を考える
+
+参加者向けに、ジャケットの魅力的な商品説明文を考えてください(100-150文字程度)。
+
+例えば「素材」「色味」「着用シーン」「保管状態」などを織り込んだ文章を提案してください。
+まだフォームには入力せず、文章を私に提示してください。
+
+→ 提案された文章を報告。
+
+## ステップ4:価格相場のリサーチ提案
+
+ジャケットの種類が「3年前購入で一度着用」程度の相場、いくらくらいが妥当か、Webで簡単にリサーチして提案してください。
+
+(具体的な検索が難しければ、一般的なフリマでの相場感で提案してOK)
+
+→ 提案価格を報告。
+
+## ステップ5:フォーム入力
+
+ステップ3〜4で決めた内容を、出品フォームに入力してください:
+- タイトル:3年前に買って一度しか着ていないジャケット
+- カテゴリ:服・ファッション
+- 価格:ステップ4で提案した金額
+- 説明:ステップ3で提案した文章
+- 状態:目立った傷なし
+- 画像:`https://picsum.photos/300` を入力(画像欄があれば)
+
+入力が終わったら、まだ「出品する」ボタンは押さずに、入力内容を私に確認させてください。
+
+→ 入力内容を報告。
+
+## ステップ6:出品実行
+
+「出品する」ボタンを押してください。
+トップページに戻り、先ほど出品したジャケットが一覧に表示されているか確認してください。
+
+→ 「ステップ6完了。出品が一覧に表示されました」と報告。
+
+## 困った時のルール
+
+- 想定外の画面が出たら勝手に進めず、画面の内容を教えてください
+- 同じ操作で2回失敗したら、止まって相談してください
+
+それでは、ステップ1から開始してください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>実習① — 1ステップ確認(20分)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                参加者の皆さんが、自分の手で初めて Cowork を動かす場面です。失敗してもいいので、「1ステップずつ確認する感覚」を掴むのが目的です。注目していただきたいのは <strong>「各ステップで止まって、私の確認を取ってから次へ」</strong>「フォーム入力前に必ず確認を取って」の2点です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE A</span>1ステップ確認 / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-10-a">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-10-a">フリマサイト「モノパス」で、私のいらないモノを出品してほしい。1ステップごとに止まって、私に結果を報告してください。
+
+## 出品するもの
+
+(ここに自分のいらないモノを書く。架空でもOK)
+
+例:
+- 「使わなくなった電気ケトル」
+- 「着なくなったコート」
+- 「読み終わった本3冊」
+
+## やってほしいこと
+
+1. ブラウザで `https://imai-design.github.io/monopass/` を開く
+2. 私の出品物について、商品説明文を考えて提案する(まだフォームには入力しない)
+3. カテゴリと価格相場を提案する
+4. 私がOKしたら、「出品する」ボタンから出品ページに進んでフォームに入力する
+5. 入力内容を私に確認させる
+6. 私がOKしたら出品実行
+7. トップページで出品が反映されたことを確認
+
+## ルール
+
+- 各ステップで止まって、私の確認を取ってから次へ進んでください
+- 提案する時は「こんな説明文どうですか?」と聞いてください
+- フォーム入力前に必ず確認を取ってください
+
+それでは、ステップ1(サイトを開く)から始めてください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>実習② — 自動実行(20分)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                確認なしで Cowork を最後まで走らせる体験です。「どこまで任せられるか」の感覚を掴んでいただきます。実習①との対比で、Cowork の自走力を体感していただく時間です。注目していただきたいのは <strong>「途中で確認を取らず、最後まで進めて」</strong>「トラブル時のみ止まる」の指示です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE B</span>自動実行 / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-10-b">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-10-b">フリマサイト「モノパス」で、私のいらないモノを出品してほしい。今度は確認なしで、最初から最後まで一気に出品まで完了させてください。
+
+## 出品するもの
+
+(ここに自分のいらないモノを書く。架空でもOK)
+
+例:
+- 「3年前に買った自転車、ほぼ未使用」
+- 「使ってないBluetoothスピーカー」
+- 「サイズが合わなかったスニーカー」
+
+## やってほしいこと
+
+以下を一気に実行してください:
+
+1. ブラウザで `https://imai-design.github.io/monopass/` を開く
+2. 出品物に最適な以下を自分で判断:
+   - 魅力的な商品説明文を作成
+   - 適切なカテゴリ
+   - 妥当な価格(相場感で判断してOK)
+   - 状態(妥当な選択肢を判断)
+3. 「出品する」ボタンから出品ページに進む
+4. 上記をすべてフォームに入力
+5. 画像は `https://picsum.photos/300` を使用
+6. 「出品する」ボタンを押して出品実行
+7. トップページに戻って、出品が反映されたことを確認
+
+## 完了報告
+
+すべて完了したら、以下を報告してください:
+- 最終的に決めたタイトル・カテゴリ・価格
+- 商品説明の内容
+- 出品が一覧に表示されたか
+
+## トラブル時のみ止まる
+
+- フォームに入力できない、ボタンが見つからない等のエラー時のみ止まって報告
+- それ以外は途中で確認を取らず、最後まで進めてください
+
+それでは、開始してください。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- =========== 11:00 ツール召喚 =========== -->
+      <details class="session" id="sess-11" data-slot="11">
+        <summary>
+          <span class="s-num">03</span>
+          <div class="s-main">
+            <div class="s-time">11:00 — 12:00 / HOOK</div>
+            <div class="s-title">ツール召喚 — Claude Code で PC内を操作</div>
+            <div class="s-tagline">YouTube のリンクから、PC に必要な機能を呼び出します。Playwright と pdftotext を入れて、午後への布石を打ちます。</div>
+          </div>
+          <button class="s-check" data-check="11" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <div class="s-meta">
+              <div><span class="label">Tool</span><span class="val">Claude Code</span></div>
+              <div><span class="label">配布物</span><span class="val">participant_transcript.md</span></div>
+              <div><span class="label">配分</span><span class="val">実演15分→実習①20分→解説5分→実習②20分</span></div>
+            </div>
+
+            <div class="callout">
+              <strong>裏で進めます:</strong> ここで入れる Playwright と pdftotext は、14:00 セッション(発注 + 経費)で実際に火を吹きます。今のうちに準備しておきましょう。
+            </div>
+
+            <div class="callout placeholder">
+              <strong>VSCode は今日入れません</strong> — VSCode は Claude Code を VSCode 内から呼び出すための人気エディタですが、本日は扱いません。配布物 zip に「家で入れる用」の手順書を同梱しています。興味ある方は持ち帰って試してみてください。
+            </div>
+
+            <div class="s-section">
+              <h4>講師実演用プロンプト</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                Code が PC の状況を判断して、必要なツールをインストールするデモです。<strong>「文字起こしを読む → 判定 → 確認 → 実装」</strong>という Code の全体像をお見せする場面です。注目していただきたいのは「各 Step 完了ごとに必ず報告」「想定外のエラーは勝手に進めず」の指示です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">DEMO</span>講師実演 / 11:00</span>
+                  <button class="copy-btn" data-copy="p-11-demo">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-11-demo">事前に文字起こし済みのテキストファイルがある。これを読んで、私に必要なツールを判断してインストールしてほしい。
+
+## 私の状況
+
+- Mac ユーザー
+- Claude を使った業務効率化を目指している
+- Claude Code をインストール済みで、これから機能を拡張したい
+- トークンには余裕がある
+
+## やってほしいこと
+
+### Step 1:文字起こしを読む
+作業ディレクトリにある文字起こしテキスト(または私が指定するファイル)を読み込んで、紹介されているツールをすべてリストアップしてください。
+
+### Step 2:ツール選定
+各ツールについて、私(Mac+Claude業務効率化目的)にとって以下を判定:
+- 必要(業務効率化に直結)
+- 不要(私の用途では使わない)
+
+判定理由も簡潔に教えてください。リストを表形式で報告してください。
+
+### Step 3:確認
+「以下のツールをインストールします、よろしいですか?」と確認してください。
+
+### Step 4:インストール
+私がOKしたら、必要と判定したものを順次インストールしてください。
+- 各ツールのインストール完了を報告
+- パスワード等が必要な場合は、私に教えてください
+
+## 重要
+
+- 各Step完了ごとに必ず報告して、私の確認を取ってから次へ進む
+- 想定外のエラーは勝手に進めず止まって相談
+
+それでは Step 1 から開始してください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>実習① — 1ステップ確認(20分)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                参加者の Code に文字起こしを読ませて、自分の PC に Playwright と pdftotext を入れる場面です。<strong>1ステップずつ進めることで、Code の判断と自分の確認のリズム</strong>を掴んでいただきます。注目していただきたいのは「私が『次へ』と言ったら次のステップへ」「インストール時にパスワード入力が必要な箇所は、私に教えて」の指示です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE A</span>1ステップ確認 / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-11-a">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-11-a">私はClaudeを使って業務効率化したい。配布された動画の文字起こしテキストを読んで、私に必要なツールをインストールしてほしい。
+
+## 私の状況
+
+- Mac ユーザー(Windows の方は適宜読み替えてください)
+- Claude を使った業務効率化を目指している
+- Claude Code をインストール済み
+
+## 配布されたテキスト
+
+`participant_transcript.md`(または同様のファイル名)を読んでください。
+
+## やってほしいこと(1ステップずつ確認しながら)
+
+### Step 1:文字起こしを読む
+1. 配布されたテキストファイルを読み込む
+2. 紹介されているツールをリストアップして、私に報告
+
+→ 私が「次へ」と言ったら次のステップへ。
+
+### Step 2:必要性の判定
+1. 各ツールについて「必要」「不要」を判定
+2. 判定理由を簡潔に説明
+3. 結果を表形式で報告
+
+→ 私が「次へ」と言ったら次のステップへ。
+
+### Step 3:インストール計画の提案
+1. 「以下の順番でインストールします」と計画を提示
+2. 各ツールの所要時間の目安も伝える
+3. 私の承認を求める
+
+→ 私が「OK」と言ったら次のステップへ。
+
+### Step 4:1つ目のツールをインストール
+1. 1つ目のツールをインストール
+2. 完了したら報告
+3. 動作確認(簡単なテスト)
+
+→ 私が「次のツールへ」と言ったら2つ目に進む。
+
+### Step 5:2つ目のツールをインストール
+- 同じ流れで2つ目もインストール
+- 完了報告
+
+## 重要
+
+- 各ステップで必ず私の確認を取ってください
+- インストール時にパスワード入力が必要な箇所は、私に教えてください
+- エラーが出たら止まって相談してください
+
+それでは Step 1 から開始してください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>実習② — 自動実行(20分)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                インストール済みツールの動作確認と、追加ツールの提案を Code に任せます。<strong>確認なしで進めることで、Code の自走力を体験</strong>していただきます。注目していただきたいのは「私の状況を踏まえて追加で便利なツールを2-3個提案」「提案したツールを順次インストール(私の確認は不要)」の指示です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE B</span>自動実行 / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-11-b">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-11-b">実習①でインストールしたツールが正しく動作するか確認したい。
+そのうえで、Claudeに「業務で使えそうな追加機能」を提案・インストールしてほしい。
+
+## 私の状況
+
+- Mac ユーザー(Windows の方は適宜読み替えてください)
+- 実習①でPlaywrightとpdftotextをインストール済み
+- 業務効率化のための追加ツールがあれば入れたい
+
+## やってほしいこと(確認なしで一気に)
+
+以下を順番に実行してください。各ステップ完了時のみ報告してください。
+
+### Step 1:既存ツールの動作確認
+- Playwright が正しくインストールされているか確認
+- pdftotext が正しくインストールされているか確認
+- 簡単な動作テストを実行
+
+### Step 2:追加で便利なツールの提案
+私の状況(Mac、Claudeで業務効率化、文書処理が多い)を踏まえて、
+追加でインストールすると便利なツールを2-3個提案してください。
+
+例:
+- yt-dlp(動画ダウンロード)
+- imagemagick(画像処理)
+- jq(JSON操作)
+- など、状況に応じて
+
+### Step 3:提案ツールのインストール
+提案したツールを順次インストール(私の確認は不要、進めてOK)
+
+### Step 4:総合動作確認
+- 全インストール済みツールのリストを表示
+- 各ツールの動作確認
+- 「業務効率化のために、これらをどう組み合わせて使えるか」のアイデアを3つ提案
+
+## 完了報告
+
+すべて完了したら以下を報告:
+- 最終的にインストール済みのツール一覧
+- 各ツールの動作状態
+- 業務での活用アイデア
+
+## トラブル時のみ止まる
+
+- インストール失敗時のみ止まって相談
+- それ以外は進めてOK
+
+それでは開始してください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>配布する文字起こしテキスト(全文)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Handout</span>
+                参加者の Code に読ませる動画文字起こしです。<strong>Playwright と pdftotext を紹介する YouTube 動画</strong>の文字起こし版になっています。実習①で、これを Code に読み込ませます。配布物 zip に <code style="font-family:var(--mono)">participant_transcript.md</code> として同梱しています。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">HANDOUT</span>participant_transcript.md</span>
+                  <button class="copy-btn" data-copy="p-11-transcript">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-11-transcript"># Claude Code で業務効率化!便利ツール2選
+
+(動画の文字起こし)
+
+---
+
+皆さんこんにちは。今日はですね、Claude Code で業務効率化したい人向けに、私が実際に使ってみて「これは入れておくと絶対に便利だよ」というツールを2つ紹介していきたいと思います。
+
+最近、Claude Code を使い始める人がすごく増えてきてるんですけど、「インストールしただけで止まってる」っていう人も多いと思うんですよね。せっかく使うなら、もう一歩踏み込んで、Claude Code から色々なツールを呼び出せるようにしておくと、できることが一気に広がります。
+
+今日紹介する2つは、私が業務で実際に使っていて、「これがあるかないかで全然違う」ってものです。Mac でも Windows でも使えます。それでは早速見ていきましょう。
+
+---
+
+## 1つ目:Playwright
+
+まず1つ目は Playwright です。
+
+これ、何ができるかと言うと、ブラウザを自動操作できるツールなんです。例えば、毎日同じウェブサイトにログインして同じ作業をしている、みたいな人いると思うんですよね。経費精算システムに領収書情報を入力するとか、社内システムにデータを転記するとか。
+
+そういうルーチンワークを、Playwright を使うと Claude Code が自動で代わりにやってくれるんです。ボタンをクリックする、フォームに文字を入力する、ページを移動する、こういうブラウザ上の操作を全部自動化できる。
+
+実際、私の場合だと、毎月の経費申請が地獄だったんですけど、Playwright と Claude Code を組み合わせて、領収書の情報から自動で経費精算サイトに入力するようにしたら、もう本当に楽になりました。
+
+Playwright のいいところは、Chrome、Firefox、Safari、全部のブラウザに対応してることですね。それと、画面を見ながらデバッグできる機能もあって、最初は「ちゃんと動いてるかな?」って心配な時も、画面を見ながら確認できる。
+
+インストールはコマンド一発で済みます。Claude Code に「Playwright をインストールして」って頼めば、ブラウザ本体まで含めて全部セットアップしてくれます。これは入れておいて損はないですね。
+
+---
+
+## 2つ目:pdftotext
+
+2つ目は pdftotext です。
+
+これは名前の通りで、PDF からテキストを抽出するツールです。「え、それだけ?」と思うかもしれないんですが、実はこれがめちゃくちゃ重要なんですよ。
+
+なんでかと言うと、Claude Code 単体だと、実は PDF の中身を直接読むのが結構苦手なんです。PDFってファイルサイズが大きいことも多いし、画像として埋め込まれてるテキストもあったりして、Claude にそのまま渡すと処理が重い。
+
+そこで pdftotext です。これを使うと、PDF からプレーンテキストだけをサクッと抜き出せる。抜き出したテキストを Claude に渡せば、すごく軽く処理できる。
+
+例えば、領収書の PDF があったとします。これを pdftotext で処理すると、「2026年5月10日、Quick Office株式会社、合計2134円、明細:ボールペン、コピー用紙、コーヒー」みたいなテキストがパッと出てくる。あとはそれを Claude が読み取って、必要な処理をすればいい。
+
+請求書の整理、契約書の確認、議事録の要約、PDFを扱う作業って意外と多いんですよね。pdftotext があると、それらが全部一気に楽になります。
+
+これも Claude Code に「pdftotext をインストールして」と頼めば、必要なものを全部入れてくれます。Mac なら Homebrew 経由で、Windows なら WSL や別の方法で入りますが、Claude Code が状況を見て適切に対応してくれるはずです。
+
+---
+
+## まとめ
+
+ということで、今日は Playwright と pdftotext、この2つを紹介しました。
+
+両方とも、入れておけば Claude Code でできることが一気に広がります。逆に言うと、これらが入ってないと、Claude Code は「文章を生成する以上のこと」がしづらいんですよね。
+
+なので、Claude Code を使い始めた人は、まず最初にこの2つだけは入れておくのをおすすめします。
+
+それでは、また次の動画でお会いしましょう。チャンネル登録もよろしくお願いします。
+
+---
+
+(動画終了)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- =========== 12:00 ランチ =========== -->
+      <details class="session" id="sess-12" data-slot="12">
+        <summary>
+          <span class="s-num">04</span>
+          <div class="s-main">
+            <div class="s-time">12:00 — 13:00 / BREAK</div>
+            <div class="s-title">ランチ休憩</div>
+            <div class="s-tagline">午後に向けてしっかり休みましょう。13:00 集合です。</div>
+          </div>
+          <button class="s-check" data-check="12" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">水分補給をお忘れなく。歩ける方はすこし歩くと、午後が違います。13:00 ぴったりに戻って来られるよう、少し早めに席にお戻りください。</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- =========== 13:00 メール処理 =========== -->
+      <details class="session" id="sess-13" data-slot="13">
+        <summary>
+          <span class="s-num">05</span>
+          <div class="s-main">
+            <div class="s-time">13:00 — 14:00 / USEFUL</div>
+            <div class="s-title">メール処理 — 朝のメール処理を Claude に任せる</div>
+            <div class="s-tagline">「今日の日付」をどう伝えるか、その作法もここで掴みます。失敗例 → 成功例の対比で学びます。</div>
+          </div>
+          <button class="s-check" data-check="13" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <div class="s-meta">
+              <div><span class="label">Site</span><a class="val" href="https://imai-design.github.io/mock-mail/" target="_blank" rel="noopener">imai-design.github.io/mock-mail</a></div>
+              <div><span class="label">Tool</span><span class="val">Claude Cowork</span></div>
+              <div><span class="label">配分</span><span class="val">実演15分→実習①20分→解説5分→実習②20分→休憩5分</span></div>
+            </div>
+
+            <div class="s-section">
+              <h4>講師実演用プロンプト・前半(失敗例パート)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                <strong>わざと「今日の日付」を伝えずに</strong> Cowork に指示する失敗例です。「来週」が解釈できなくて困る、という対比をお見せするためのプロンプトです。注目していただきたいのは <strong>「日付情報がないと、Cowork は何月何日かが分からない」</strong>ことを、参加者の皆さんに体感していただく流れです。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">DEMO ①</span>失敗例 / 13:00</span>
+                  <button class="copy-btn" data-copy="p-13-demo1">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-13-demo1">モックメールを開いて、メール処理を任せたい。
+
+ブラウザで `https://imai-design.github.io/mock-mail/` を開いてください。
+
+開いたら、以下を実行してください:
+
+1. 受信トレイの中で、「来週」打ち合わせの日程調整が必要なメールを1通選ぶ
+2. そのメールに対して、来週の都合の良い日時を提案する返信下書きを作成
+
+→ 結果を報告してください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>講師実演用プロンプト・後半(成功例パート、フルセット)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                前提情報を整理して、改めて指示する成功例です。<strong>「今日は2026年5月11日」を冒頭に書くだけで Cowork が動けるようになる</strong>、その対比をお見せします。注目していただきたいのは「前提情報」ブロックと、分類→★付与→下書き作成→カレンダー登録というフルセットの一気通貫処理です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">DEMO ②</span>成功例 / 13:00</span>
+                  <button class="copy-btn" data-copy="p-13-demo2">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-13-demo2">申し訳ない、情報が足りなかった。前提情報を整理して、改めて指示します。
+
+## 前提情報
+
+- **今日は2026年5月11日(月曜日)です**
+- 来週とは2026年5月18日(月)〜5月24日(日) を指します
+- 私の名前は今井です
+
+## やってほしいこと
+
+モックメール(`https://imai-design.github.io/mock-mail/`)を開いて、以下を全部やってください:
+
+### Step 1:メール全チェック・分類
+
+受信トレイのメールを全部チェックして、以下に分類してください:
+
+- **返信が必要なメール**(質問・確認・依頼系)
+- **日程調整が必要なメール**(都合を聞かれている系)
+- **すでに日程確定したMTG通知**(カレンダーに入れるべき情報)
+- **返信不要のメール**(通知・メルマガ・FYI系)
+
+→ 分類結果を一覧で報告。
+
+### Step 2:返信が必要なメールに★マーク付与
+
+「返信が必要」「日程調整が必要」と判定したメールすべてに★マークを付けてください。
+
+→ ★を付けたメール一覧を報告。
+
+### Step 3:返信下書きを作成
+
+「返信が必要」と判定したメールに対して、返信下書きを作成してください。
+
+返信文のトーンは丁寧めなビジネスメール調で。
+具体的な内容は、メールの内容に応じて適切に判断してください。
+
+→ 作成した下書き内容を報告。
+
+### Step 4:日程調整メールへの返信
+
+「日程調整が必要」と判定したメールに対して、カレンダーの空き状況を考慮して、候補日時を3つ含む返信下書きを作成してください。
+
+カレンダーは、モックメールの「カレンダー」タブで確認できます。
+
+→ 作成した下書き内容を報告。
+
+### Step 5:確定MTGをカレンダーに登録
+
+「すでに日程確定」と判定したメールから、MTG情報(日時・場所・URL・参加者・議題)を抽出して、カレンダーに新規予定として登録してください。
+
+→ 登録した予定を報告。
+
+## 完了報告
+
+すべて完了したら、以下のサマリーを教えてください:
+- 分類結果(各カテゴリ何通か)
+- ★を付けたメール数
+- 作成した下書き数
+- カレンダーに登録した予定数
+
+進行中、節目で進捗を報告してくれると嬉しい。それでは始めてください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>実習① — 3通限定・1ステップ確認(20分)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                参加者の皆さんがメール処理を Cowork に任せる場面です。<strong>受信トレイ全部ではなく、3通に絞る</strong>ことで時間内に完走できる設計になっています。注目していただきたいのは「今日は2026年5月11日」の前提情報、「3通限定」の制約、「私が OK と言ったら下書き保存」の確認サイクルです。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE A</span>1ステップ確認 / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-13-a">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-13-a">モックメールでメール処理を任せたい。1ステップごとに止まって、私に結果を報告してください。
+
+## 前提情報
+
+- **今日は2026年5月11日(月曜日)です**
+- 来週とは2026年5月18日(月)〜5月24日(日)を指します
+
+## やってほしいこと
+
+### ステップ1:サイトを開く
+
+ブラウザで `https://imai-design.github.io/mock-mail/` を開いてください。
+
+→ 開いたら報告。
+
+### ステップ2:メールを3通選ぶ
+
+受信トレイの中から、「返信が必要そうなメール」「日程調整が必要そうなメール」を **合計3通** 選んでください。
+
+選んだメール3通の件名と送信者を私に報告してください。
+
+→ 私が「次へ」と言ったら次のステップ。
+
+### ステップ3:★マークを付ける
+
+選んだ3通に★マークを付けてください。
+
+→ 結果を報告。
+
+### ステップ4:返信下書きを順番に作成
+
+選んだ3通それぞれに、返信下書きを作成してください。
+
+各メールごとに:
+1. 私に「このメールにこういう返信を考えました」と提案
+2. 私がOKと言ったら下書き保存
+3. 次のメールに進む
+
+3通すべて完了するまで繰り返してください。
+
+→ 全件完了したら報告。
+
+## ルール
+
+- 各ステップで止まって、私の確認を取ってから次へ進んでください
+- 返信文の内容は、私が確認してから保存してください
+
+それでは、ステップ1から始めてください。</div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>実習② — 3通限定・自動実行(20分)</h4>
+              <div class="scene-note">
+                <span class="scene-label">Scene</span>
+                確認なしで Cowork に 3 通の処理を任せます。<strong>日程調整・返信・カレンダー登録を Cowork が自分で判断</strong>します。注目していただきたいのは「最も対応が必要そうな3通を自分で判断」「種類は混ざっていてOK」「カレンダーの空きを確認して候補日時付き返信」という、自走で完結する指示の組み方です。
+              </div>
+              <div class="prompt">
+                <div class="prompt-head">
+                  <span class="prompt-label"><span class="kind">PRACTICE B</span>自動実行 / 参加者用</span>
+                  <button class="copy-btn" data-copy="p-13-b">Copy</button>
+                </div>
+                <div class="prompt-body" id="p-13-b">モックメールでメール処理を任せたい。今度は確認なしで、最初から最後まで一気に処理を完了させてください。
+
+## 前提情報
+
+- **今日は2026年5月11日(月曜日)です**
+- 来週とは2026年5月18日(月)〜5月24日(日)を指します
+- 私はカレンダーの予定も含めて確認してOKです
+
+## やってほしいこと
+
+以下を一気に実行してください(確認は取らずに進めてください):
+
+1. ブラウザで `https://imai-design.github.io/mock-mail/` を開く
+
+2. 受信トレイの中から、**最も対応が必要そうなメール3通**を自分で判断して選ぶ
+   - 返信が必要、日程調整が必要、確定したMTG情報、など
+   - 種類は混ざっていてOK
+
+3. 選んだ3通すべてに★マークを付ける
+
+4. 各メールに対して適切なアクションを取る:
+   - 返信が必要なメール → 返信下書きを作成・保存
+   - 日程調整が必要 → カレンダーの空きを確認して候補日時付き返信を作成・保存
+   - 確定MTG情報 → カレンダーに予定登録
+
+## 完了報告
+
+すべて完了したら、以下を報告してください:
+- 選んだ3通の件名
+- 各メールに対して何のアクションをしたか
+- 作成した下書きや登録した予定の概要
+
+## トラブル時のみ止まる
+
+- フォームに入力できない、ボタンが見つからない等のエラー時のみ止まって報告
+- それ以外は途中で確認を取らず、最後まで進めてください
+
+それでは、開始してください。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- =========== 14:00 発注+経費 =========== -->
+      <details class="session" id="sess-14" data-slot="14">
+        <summary>
+          <span class="s-num">06</span>
+          <div class="s-main">
+            <div class="s-time">14:00 — 15:00 / WOW</div>
+            <div class="s-title">発注 + 経費 — Cowork × Code の最強コラボ</div>
+            <div class="s-tagline">画面操作は Cowork、データ処理は Code。Cowork で詰まったら Code に渡す、現実的な業務フローを体験します。</div>
+          </div>
+          <button class="s-check" data-check="14" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <div class="s-meta">
+              <div><span class="label">Site (発注)</span><a class="val" href="https://imai-design.github.io/quick-office/" target="_blank" rel="noopener">imai-design.github.io/quick-office</a></div>
+              <div><span class="label">Site (経費)</span><a class="val" href="https://imai-design.github.io/easy-keihi/" target="_blank" rel="noopener">imai-design.github.io/easy-keihi</a></div>
+              <div><span class="label">在庫スプレッドシート</span><span class="val">※共有用URLは当日朝に展開</span></div>
+              <div><span class="label">Tools</span><span class="val">Cowork × Code(Playwright + pdftotext)</span></div>
+            </div>
+
+            <div class="s-section">
+              <h4>このセッションの全体フロー</h4>
+              <div class="flow-split">
+                <div class="flow-col">
+                  <h5>Cowork パート / 発注 + 領収書DL</h5>
+                  <ol>
+                    <li>在庫スプレッドシートを確認 → 「要発注」商品を特定</li>
+                    <li>Quick Office にログイン → 商品をカートに追加</li>
+                    <li>注文確定</li>
+                    <li>領収書 PDF をダウンロード</li>
+                  </ol>
+                </div>
+                <div class="flow-col">
+                  <h5>Code パート / PDF解析 + 経費申請</h5>
+                  <ol>
+                    <li>ダウンロードフォルダの最新 PDF を特定</li>
+                    <li><code style="font-family:var(--mono);font-size:11px;background:var(--cream-deep);padding:1px 4px;border-radius:2px">pdftotext</code> で PDF をテキスト抽出</li>
+                    <li><code style="font-family:var(--mono);font-size:11px;background:var(--cream-deep);padding:1px 4px;border-radius:2px">Playwright</code> で Easy経費 を起動・ログイン</li>
+                    <li>フォーム入力(利用日・利用先・金額・勘定科目・摘要)</li>
+                    <li>「申請する」をクリック → ダッシュボード反映</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="flow-bridge">
+                Cowork → Code の<strong>橋渡しは人間が判断します</strong>。「領収書 DL 完了 → Code に『最新の領収書 PDF を処理して』」と切り替えます。
+              </div>
+            </div>
+
+            <div class="callout">
+              <strong>学びのポイント:</strong> Cowork は「画面に見えるもの」が得意、Code は「ファイル処理・自動化」が得意です。<strong>両方を使い分けると、現実の業務全体が自動化できます</strong>。今日のクライマックスです。
+            </div>
+
+            <div class="callout placeholder">
+              <strong>プロンプト本文は本番までに用意。</strong> 完成次第ここに掲載されます(実演用 / 実習①用 / 実習②用 を Cowork パートと Code パートそれぞれ 3 本ずつ)。
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- =========== 15:00 日割り計算 =========== -->
+      <details class="session" id="sess-15" data-slot="15">
+        <summary>
+          <span class="s-num">07</span>
+          <div class="s-main">
+            <div class="s-time">15:00 — 16:00 / USEFUL</div>
+            <div class="s-title">日割り計算 — 自分専用ツールを作る</div>
+            <div class="s-tagline">日割り計算ツールを、自分の手で作ります。「自分のためだけのツール」を持ち帰りましょう。</div>
+          </div>
+          <button class="s-check" data-check="15" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <div class="s-meta">
+              <div><span class="label">Tool</span><span class="val">Claude Code(プランモード)</span></div>
+              <div><span class="label">成果物</span><span class="val">自分専用の日割り計算ツール</span></div>
+              <div><span class="label">配分</span><span class="val">講師実演15分→実習①20分→解説5分→実習②20分</span></div>
+            </div>
+
+            <div class="s-section">
+              <h4>プランモードとは(参加者への説明)</h4>
+              <blockquote style="margin:0;padding:18px 22px;background:var(--cream);border-left:3px solid var(--orange);font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.7;color:var(--ink);border-radius:0 2px 2px 0">
+                プランモードは、Claude Code の機能の一つです。通常モードは Code がいきなり実装し始めます。プランモードは、まず<strong style="color:var(--orange-dark);font-style:normal">「こういう順番で作ります」という計画</strong>を見せてくれます。計画を承認したら実装に進む、という流れです。<br><br>
+                <span style="font-style:normal;font-family:var(--sans);font-size:14px;color:var(--ink-soft)">いきなり書かれて方向性違いの大手戻りを防げます。初めて Code を使う時は、<strong style="color:var(--ink)">プランモード推奨</strong>です。</span>
+              </blockquote>
+            </div>
+
+            <div class="s-section">
+              <h4>講師実演(15分) — 多機能版を Code に作らせる</h4>
+              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">講師は<strong style="color:var(--ink)">多機能版</strong>を Code に作らせて、皆さんにお見せします。月額給与・対象月・入社/退社日・休職期間・有給・各種手当などを盛り込んだ HTML ファイルとして完成します。localStorage 履歴と CSV/PDF エクスポート機能つきです。</p>
+            </div>
+
+            <div class="s-section">
+              <h4>実習①(20分) — プランモードでシンプル版を作成</h4>
+              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">参加者の皆さんは <strong style="color:var(--ink)">シンプル版</strong>(月額 + 営業日数 + 出勤日数 → 日割り給与)を、プランモードで実装します。<strong style="color:var(--ink)">Code 内で対話形式</strong>(計画提示 → 承認 → 実装)で進めます。</p>
+            </div>
+
+            <div class="s-section">
+              <h4>実習②(20分) — 当日の進捗で講師が判断</h4>
+              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">複数候補から、参加者の状況を見て講師が選びます。</p>
+              <ul class="can-list" style="margin-top:8px">
+                <li><span class="mark" style="color:var(--orange-dark)">A</span><span>自分の業務での使いどころを Claude とブレスト</span></li>
+                <li><span class="mark" style="color:var(--orange-dark)">B</span><span>機能拡張(休職対応、有給、手当など)</span></li>
+                <li><span class="mark" style="color:var(--orange-dark)">C</span><span>別のツールを 1 つ作ってみる</span></li>
+              </ul>
+            </div>
+
+            <div class="callout placeholder">
+              <strong>プロンプト本文は本番までに用意。</strong> 完成次第ここに掲載されます。
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- =========== 16:00 ビジネス構想 =========== -->
+      <details class="session" id="sess-16" data-slot="16">
+        <summary>
+          <span class="s-num">08</span>
+          <div class="s-main">
+            <div class="s-time">16:00 — 17:00 / WOW</div>
+            <div class="s-title">ビジネス構想 — HPまで一気に作る</div>
+            <div class="s-tagline">ビジネスを構想して、HP まで一気に作ります。アイデアが形になる、感動の一時間です。</div>
+          </div>
+          <button class="s-check" data-check="16" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <div class="s-meta">
+              <div><span class="label">Tool</span><span class="val">Claude Code(サブエージェント)</span></div>
+              <div><span class="label">Deploy</span><a class="val" href="https://app.netlify.com/drop" target="_blank" rel="noopener">app.netlify.com/drop</a></div>
+              <div><span class="label">講師実演業種</span><span class="val">オンライン英会話サービス</span></div>
+              <div><span class="label">成果物</span><span class="val">構想レポート + HP(公開URL付き)</span></div>
+            </div>
+
+            <div class="s-section">
+              <h4>講師実演の全体フロー(5 Phase)</h4>
+              <ul class="phase-list">
+                <li class="phase">
+                  <div>
+                    <div class="p-title">偉人ディスカッション<span class="p-time">約 1 分</span></div>
+                    <div class="p-body">サブエージェント機能で 3 人の偉人をディスカッションさせます。各偉人の視点でビジネスアイデアを出させ、統合してコンセプトを決定します。偉人選定は Code に自由に任せます。</div>
+                  </div>
+                </li>
+                <li class="phase">
+                  <div>
+                    <div class="p-title">構想レポートを HTML で作成<span class="p-time">約 2 分</span></div>
+                    <div class="p-body">ディスカッション結果を「業務文書」として HTML にまとめます。ファイル名は <code style="font-family:var(--mono);font-size:11.5px;background:var(--cream-deep);padding:1px 6px;border-radius:2px;color:var(--orange-dark)">business-report.html</code> です。</div>
+                  </div>
+                </li>
+                <li class="phase">
+                  <div>
+                    <div class="p-title">HP 構成設計<span class="p-time">約 1 分</span></div>
+                    <div class="p-body">レポートの内容を元に、ランディングページの構成を設計します。</div>
+                  </div>
+                </li>
+                <li class="phase">
+                  <div>
+                    <div class="p-title">HP 実装<span class="p-time">約 2–3 分</span></div>
+                    <div class="p-body">ファイル名は <code style="font-family:var(--mono);font-size:11.5px;background:var(--cream-deep);padding:1px 6px;border-radius:2px;color:var(--orange-dark)">index.html</code>。商品ページとして仕上げます。</div>
+                  </div>
+                </li>
+                <li class="phase">
+                  <div>
+                    <div class="p-title">Netlify Drop でデプロイ<span class="p-time">30秒〜1分</span></div>
+                    <div class="p-body">講師が <a href="https://app.netlify.com/drop" target="_blank" rel="noopener" style="color:var(--orange-dark);border-bottom:1px solid var(--orange-soft);text-decoration:none">app.netlify.com/drop</a> にフォルダをドラッグします。アカウント不要で、ドラッグするだけで公開 URL が発行されます。<br><span style="color:var(--ink-faint);font-size:12.5px">※ GitHub Pages はビルド時間問題があるため不採用</span></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="callout">
+              <strong>レポートと HP は分離します。</strong> Phase 2 の <code style="font-family:var(--mono);font-size:11.5px">business-report.html</code> はビジネス構想ドキュメント、Phase 4 の <code style="font-family:var(--mono);font-size:11.5px">index.html</code> はサービスのランディングページ。役割が違うので、分けて作ります。
+            </div>
+
+            <div class="s-section">
+              <h4>参加者実習</h4>
+              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)"><strong style="color:var(--ink)">実習①:</strong> プランモードで、自分のビジネス(架空でも構いません)を偉人ディスカッションで練り上げます。<br><strong style="color:var(--ink)">実習②:</strong> 実習①で決まったコンセプトに基づいて HP を実装し、Netlify Drop でデプロイします。</p>
+            </div>
+
+            <div class="callout placeholder">
+              <strong>プロンプト本文は本番までに用意。</strong> 完成次第ここに掲載されます。
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- =========== 17:00 まとめ =========== -->
+      <details class="session" id="sess-17" data-slot="17">
+        <summary>
+          <span class="s-num">09</span>
+          <div class="s-main">
+            <div class="s-time">17:00 — 18:00 / TAKEAWAY</div>
+            <div class="s-title">まとめ &amp; Q&amp;A</div>
+            <div class="s-tagline">自分のビジネスで使えるかを検討します。質疑応答を経て、明日からの一歩を持ち帰りましょう。</div>
+          </div>
+          <button class="s-check" data-check="17" aria-label="完了マーク">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <span class="s-caret">+</span>
+        </summary>
+        <div class="s-body">
+          <div class="s-body-inner">
+            <div class="s-meta">
+              <div><span class="label">構成</span><span class="val">検討15分 → 発表15分 → 紹介20分 → Q&amp;A 10分</span></div>
+              <div><span class="label">紹介する</span><span class="val">Obsidian 連携 / ECC</span></div>
+            </div>
+
+            <div class="s-section">
+              <h4>このセッションの構成(4 Phase)</h4>
+              <ul class="phase-list">
+                <li class="phase">
+                  <div>
+                    <div class="p-title">検討タイム(個人ワーク)<span class="p-time">15 分</span></div>
+                    <div class="p-body">「自分のビジネスでどう使うか」を考えていただきます。下のガイド質問を、画面または Zoom チャットで提示します。</div>
+                  </div>
+                </li>
+                <li class="phase">
+                  <div>
+                    <div class="p-title">発表 + 講師コメント<span class="p-time">15 分 · 3–4 人</span></div>
+                    <div class="p-body">挙手または講師指名で 3–4 人。発表者は 1 分発表、講師から 30 秒コメントをお返しします。</div>
+                  </div>
+                </li>
+                <li class="phase">
+                  <div>
+                    <div class="p-title">Obsidian + ECC 紹介<span class="p-time">20 分</span></div>
+                    <div class="p-body">Obsidian 連携実演(10 分):別ターミナルでも記憶の引き継ぎをお見せします。<br>ECC 紹介(10 分):URL のご案内のみで、インストールはご自宅でお試しください。<br><span style="color:var(--ink-faint);font-size:12.5px">ECC: <a href="https://github.com/affaan-m/everything-claude-code" target="_blank" rel="noopener" style="color:var(--orange-dark);text-decoration:none;border-bottom:1px solid var(--orange-soft)">github.com/affaan-m/everything-claude-code</a></span></div>
+                  </div>
+                </li>
+                <li class="phase">
+                  <div>
+                    <div class="p-title">質疑応答 + 締めの挨拶<span class="p-time">10 分</span></div>
+                    <div class="p-body">挙手または Zoom チャットで質問を集めます。最後に締めの挨拶(下記)をお伝えします。</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="s-section">
+              <h4>検討タイムの問い(参加者用)</h4>
+              <div class="reflect-block">
+                <div class="r-eyebrow">— Reflection · 15 minutes solo</div>
+                <ol>
+                  <li>今日いちばん「使えそう」と思ったセッションは?</li>
+                  <li>その内容を、自分の業務の<em>どの作業</em>に当てはめられそう?</li>
+                  <li>明日からまず1つやるとしたら、何?</li>
+                </ol>
+                <div class="r-foot">
+                  完璧でなくて構いません・1 つ決まれば OK です・困ったら隣の人や Claude にご相談ください。
+                </div>
+              </div>
+            </div>
+
+            <div class="s-section">
+              <h4>締めの挨拶(講師の最後の言葉)</h4>
+              <div class="closing-card">
+                <p>皆さん、今日は1日お疲れさまでした。</p>
+                <p>今日は制限してやってもらいましたが、だいぶやりたいことが増えたんじゃないでしょうか? 課金して使いまくった時のパワーで、これがどれくらいの利益になるか、想像できたんじゃないでしょうか。</p>
+                <p><em>私は、課金して使いまくることをお勧めします。</em></p>
+                <p>ちなみに、Pro より上の Max プランにすると、「Auto モード」という節約モードが追加されます。Claude がタスクの難易度を判断して、最適なモデルを選んで動いてくれます。コストを抑えながらパワフルに使えます。</p>
+                <p>明日からまず1つやってみてください。詰まったら、Claude が一緒に考えてくれます。<br>1人で抱え込まないで、AIを相棒にしてください。</p>
+                <p style="margin-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">— ありがとうございました!</p>
+              </div>
+            </div>
+
+            <div class="callout">
+              <strong>時間が余ったら:</strong> 同じプロンプトを Opus と Sonnet で実行して、レスポンスの違い(深さ、複雑な推論能力)を体感していただきます。
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     RESOURCES
+     ========================================================= -->
+<section id="resources">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">— Section 03 / Toolbox</div>
+      <h2 class="section-title">配布<em>サイト</em>。</h2>
+      <p class="section-lede">本日触る4つのダミーサイト。すべて GitHub Pages にホストされた、安全な架空のサービスです。</p>
+    </div>
+
+    <div class="resource-grid">
+      <a class="resource" href="https://imai-design.github.io/monopass/" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-label">Session 10:00</div>
+        <div class="r-name">モノパス</div>
+        <div class="r-desc">汎用フリマサイト。架空の商品を出品して、Cowork に画面操作をやらせる初体験用。</div>
+        <div class="r-url">imai-design.github.io/monopass/</div>
+      </a>
+
+      <a class="resource" href="https://imai-design.github.io/mock-mail/" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-label">Session 13:00</div>
+        <div class="r-name">モックメール</div>
+        <div class="r-desc">Gmail 風の受信トレイ + カレンダー。朝のメール処理を Claude に任せる練習に。</div>
+        <div class="r-url">imai-design.github.io/mock-mail/</div>
+      </a>
+
+      <a class="resource" href="https://imai-design.github.io/quick-office/" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-label">Session 14:00 / 発注</div>
+        <div class="r-name">Quick Office</div>
+        <div class="r-desc">オフィス用品 EC。在庫を見て発注する流れを Cowork に任せます。</div>
+        <div class="r-url">imai-design.github.io/quick-office/</div>
+      </a>
+
+      <a class="resource" href="https://imai-design.github.io/easy-keihi/" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-label">Session 14:00 / 経費</div>
+        <div class="r-name">Easy経費</div>
+        <div class="r-desc">経費精算サイト。領収書PDF → pdftotext → 自動入力、の最終地点。</div>
+        <div class="r-url">imai-design.github.io/easy-keihi/</div>
+      </a>
+    </div>
+
+    <div class="login-card">
+      <div class="l-label">Login<br>(全サイト共通)</div>
+      <div class="l-field">
+        <span class="label">Email</span>
+        <span class="val" data-copy-text="test@example.com">test@example.com</span>
+      </div>
+      <div class="l-field">
+        <span class="label">Password</span>
+        <span class="val" data-copy-text="Camp2026Secure">Camp2026Secure</span>
+      </div>
+      <div class="l-note">※ ダミー認証ですので、実際には何を入力してもログインできます。値をタップするとコピーできます。</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     RULES & SAFETY
+     ========================================================= -->
+<section id="rules" style="background: var(--cream-deep);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">— Section 04 / Field Manual</div>
+      <h2 class="section-title">作法と<em>安全</em>。</h2>
+      <p class="section-lede">迷ったり、警告画面が出たり、Cowork が固まったり。今日のフィールドで覚えておきたいことを、まとめました。</p>
+    </div>
+
+    <div class="two-col">
+      <!-- Safety Notice -->
+      <div class="rule-card dark">
+        <div class="r-eyebrow">Safety Notice</div>
+        <div class="r-title">警告メッセージが出ても、大丈夫。</div>
+        <blockquote>
+          ブラウザは皆さんを守るために『念のため』の警告を出してきます。今日触るのは、すべてダミーサイトです。何が起きても、実害はありません。困ったら、すぐ手を挙げてください。一緒に対応します。
+        </blockquote>
+        <p><strong style="color:var(--orange)">本物の業務で警告が出たら:</strong></p>
+        <ul class="can-list">
+          <li><span class="mark" style="color:var(--orange)">①</span><span>そのサイト、本当に自分が使っているサービスですか?</span></li>
+          <li><span class="mark" style="color:var(--orange)">②</span><span>入力するのは、本当の個人情報・パスワードですか?</span></li>
+        </ul>
+        <p style="margin-top:14px">どちらかでも「はい」なら、警告を無視せず、ちゃんと読んで判断してください。</p>
+      </div>
+
+      <!-- Cowork Rules -->
+      <div class="rule-card">
+        <div class="r-eyebrow">Cowork Manual</div>
+        <div class="r-title">Cowork にできること、できないこと。</div>
+        <ul class="can-list">
+          <li><span class="mark yes">✓</span><span>フォーム入力</span></li>
+          <li><span class="mark yes">✓</span><span>ボタンクリック / ページ遷移</span></li>
+          <li><span class="mark yes">✓</span><span>画面に表示されている要素の認識</span></li>
+          <li><span class="mark no">✕</span><span>ファイルアップロード</span></li>
+          <li><span class="mark no">✕</span><span>ダウンロードしたPDFや画像の中身チェック(限定的)</span></li>
+          <li><span class="mark no">✕</span><span>主観的な判断</span></li>
+        </ul>
+
+        <div class="date-rule">
+          <div class="label">★ Today's Rule</div>
+          <div class="title">「今日の日付」をプロンプトに。</div>
+          <div class="body">Cowork は日付を持っていません。日程調整・期限・「来週」などを扱う時は、必ずプロンプト冒頭に書き添えてください。</div>
+          <code>今日は2026年5月11日(月)です。</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h3>Today's Compass</h3>
+        <p>Claude入門 1日キャンプ<br>2026年 5月 11日(月)<br>9:00–18:00 / Zoom</p>
+      </div>
+      <div>
+        <h3>Need Help?</h3>
+        <p>Zoom チャットで講師(今井)にお声がけください。<br>困ったら、迷う前に手を挙げてください。それが今日のお守りです。</p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>Hosted by ホリエモンAI学校 / Instructor: imai-design</span>
+      <em>"AIに『やってもらう』を、その手で。"</em>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<!-- =========================================================
+     SCRIPT
+     ========================================================= -->
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- Schedule data (for current-session detection) ---------- */
+  // Camp date: 2026-05-11 (Mon). All times JST.
+  // Session boundaries by hour slot.
+  const SLOTS = [
+    {slot:'09', start:9,  end:10, title:'セットアップ',     id:'sess-09'},
+    {slot:'10', start:10, end:11, title:'フリマ出品',       id:'sess-10'},
+    {slot:'11', start:11, end:12, title:'ツール召喚',       id:'sess-11'},
+    {slot:'12', start:12, end:13, title:'ランチ休憩',       id:'sess-12'},
+    {slot:'13', start:13, end:14, title:'メール処理',       id:'sess-13'},
+    {slot:'14', start:14, end:15, title:'発注 + 経費',      id:'sess-14'},
+    {slot:'15', start:15, end:16, title:'日割り計算',       id:'sess-15'},
+    {slot:'16', start:16, end:17, title:'ビジネス構想',     id:'sess-16'},
+    {slot:'17', start:17, end:18, title:'まとめ & Q&A',     id:'sess-17'}
+  ];
+  const CAMP_DATE = '2026-05-11';
+
+  /* ---------- Now detection ---------- */
+  function pad(n){return String(n).padStart(2,'0')}
+  function getCurrentSlot(){
+    const now = new Date();
+    const today = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate());
+    const isCampDay = (today === CAMP_DATE);
+    const h = now.getHours();
+    const m = now.getMinutes();
+
+    if(!isCampDay){
+      // Pre-camp or post-camp
+      if(today < CAMP_DATE){
+        return {state:'pre', label:'本番前 / Preview', title:'2026.05.11 まで待機中', remaining:null};
+      }else{
+        return {state:'post', label:'1日 おつかれさまでした', title:'Camp Complete', remaining:null};
+      }
+    }
+    // During camp day
+    if(h < 9){
+      return {state:'pre-day', label:'もうすぐ Start', title:'9:00 にスタート', remaining:`あと ${9-h-1}h ${60-m}m`};
+    }
+    if(h >= 18){
+      return {state:'post-day', label:'1日 おつかれさまでした', title:'Camp Complete', remaining:null};
+    }
+    const cur = SLOTS.find(s => h >= s.start && h < s.end);
+    if(!cur) return null;
+    const remainingMin = (cur.end - h - 1) * 60 + (60 - m);
+    const idx = SLOTS.indexOf(cur);
+    return {
+      state:'live',
+      label:`Now · Session ${pad(idx+1)} · ${pad(cur.start)}:00–${pad(cur.end)}:00`,
+      title:cur.title,
+      remaining:`残り 約 ${remainingMin}分`,
+      slot:cur.slot,
+      id:cur.id
+    };
+  }
+
+  function updateNow(){
+    const status = getCurrentSlot();
+    const pill = document.getElementById('nowPill');
+    const title = document.getElementById('nowTitle');
+
+    // clear all is-now
+    document.querySelectorAll('.tl-row.is-now').forEach(r => r.classList.remove('is-now'));
+
+    if(!status){
+      pill.textContent = '—';
+      title.textContent = '本日の進行';
+      return;
+    }
+    pill.textContent = status.label + (status.remaining ? ' · ' + status.remaining : '');
+    title.textContent = status.title;
+
+    if(status.state === 'live' && status.slot){
+      const row = document.querySelector(`.tl-row[data-slot="${status.slot}"]`);
+      if(row) row.classList.add('is-now');
+    }
+  }
+  updateNow();
+  setInterval(updateNow, 30000); // refresh every 30s
+
+  /* ---------- Copy buttons (prompts) ---------- */
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const targetId = btn.getAttribute('data-copy');
+      const target = document.getElementById(targetId);
+      if(!target) return;
+      const text = target.textContent;
+      try{
+        await navigator.clipboard.writeText(text);
+        btn.classList.add('copied');
+        const original = btn.textContent;
+        btn.textContent = '✓ Copied';
+        showToast('プロンプトをコピーしました');
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.textContent = original;
+        }, 1800);
+      }catch(err){
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        showToast('プロンプトをコピーしました');
+      }
+    });
+  });
+
+  /* ---------- Click-to-copy for login fields ---------- */
+  document.querySelectorAll('[data-copy-text]').forEach(el => {
+    el.addEventListener('click', async () => {
+      const text = el.getAttribute('data-copy-text');
+      try{
+        await navigator.clipboard.writeText(text);
+        showToast(`コピーしました: ${text}`);
+      }catch(err){}
+    });
+  });
+
+  /* ---------- Toast ---------- */
+  let toastTimer;
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 1700);
+  }
+
+  /* ---------- Progress checklist (localStorage) ---------- */
+  const STORAGE_KEY = 'camp-2026-05-11-progress';
+  function loadProgress(){
+    try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    catch(e){ return {}; }
+  }
+  function saveProgress(p){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }catch(e){}
+  }
+  let progress = loadProgress();
+
+  function renderProgress(){
+    document.querySelectorAll('.s-check').forEach(btn => {
+      const slot = btn.getAttribute('data-check');
+      if(progress[slot]){ btn.classList.add('checked'); }
+      else{ btn.classList.remove('checked'); }
+    });
+    // Update progress strip in hero
+    const strip = document.getElementById('progressStrip');
+    if(strip){
+      strip.innerHTML = '';
+      SLOTS.forEach(s => {
+        const cell = document.createElement('div');
+        cell.className = 'pcell' + (progress[s.slot] ? ' done' : '');
+        cell.title = `${s.start}:00 ${s.title}`;
+        strip.appendChild(cell);
+      });
+    }
+  }
+  renderProgress();
+
+  document.querySelectorAll('.s-check').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const slot = btn.getAttribute('data-check');
+      progress[slot] = !progress[slot];
+      saveProgress(progress);
+      renderProgress();
+    });
+  });
+
+  /* ---------- Smooth scroll offset for sticky-ish now-bar ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(!target) return;
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.scrollY - 16;
+      window.scrollTo({top: y, behavior: 'smooth'});
+
+      // Auto-open the target session if collapsed
+      if(target.tagName === 'DETAILS' && !target.open){
+        setTimeout(() => target.open = true, 320);
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
