@@ -1455,7 +1455,6 @@
             <div class="s-section">
               <h4>全員でやる8ステップ</h4>
               <ol class="setup-list">
-                <li><span><a href="assets/claude-camp-handout.zip" download="claude-camp-配布物.zip" style="color:var(--orange-dark);text-decoration:underline;text-underline-offset:3px"><strong>配布物(zip)</strong>をダウンロード</a>して、<strong>解凍</strong>する</span></li>
                 <li>
                   <div class="setup-li-body">
                     <div>デスクトップに <code>claude-camp</code> フォルダを作成</div>
@@ -1466,11 +1465,29 @@
                     <div class="cmd-hint">ターミナル(Mac は <code>terminal.app</code>)に貼り付けて Enter で、デスクトップに <code>claude-camp</code> フォルダができます。Finder から手作りでも OK です。</div>
                   </div>
                 </li>
-                <li><strong>Claude アカウント</strong>を作成</li>
-                <li><strong>Pro 契約</strong>(クレジットカードが必要・当日案内します)</li>
+                <li><span><a href="assets/claude-camp-handout.zip" download="claude-camp-配布物.zip" style="color:var(--orange-dark);text-decoration:underline;text-underline-offset:3px"><strong>配布物(zip)</strong>をダウンロード</a>して、<strong>解凍したフォルダを <code>claude-camp</code> の中に入れる</strong></span></li>
+                <li>
+                  <div class="setup-li-body">
+                    <div><strong>VS Code</strong>をダウンロード &amp; インストール</div>
+                    <div class="cmd-row">
+                      <span class="cmd-text">https://code.visualstudio.com/download</span>
+                      <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener" class="cmd-copy" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">サイトを開く ↗</a>
+                    </div>
+                    <div class="cmd-hint">配布物内の <code>VSCode手順書.txt</code> も合わせてご覧ください。</div>
+                  </div>
+                </li>
+                <li>
+                  <div class="setup-li-body">
+                    <div><strong>Claude アカウント</strong>を作成</div>
+                    <div class="cmd-row">
+                      <span class="cmd-text">https://claude.ai/new</span>
+                      <a href="https://claude.ai/new" target="_blank" rel="noopener" class="cmd-copy" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">サイトを開く ↗</a>
+                    </div>
+                  </div>
+                </li>
+                <li><strong>Pro 契約</strong>（クレジットorデビットカードが必要、案内致します）</li>
                 <li><strong>Claude デスクトップアプリ</strong>をダウンロード &amp; インストール</li>
                 <li>デスクトップアプリにサインイン</li>
-                <li>Claude Code を起動確認 → <code>cd ~/Desktop/claude-camp</code> → <code>claude</code></li>
                 <li><strong>モデル指定</strong>:<code>/model opusplan</code> をデフォルトに設定</li>
               </ol>
             </div>
@@ -1510,7 +1527,6 @@
             <div class="s-meta">
               <div><span class="label">Site</span><a class="val" href="https://imai-design.github.io/monopass/" target="_blank" rel="noopener">imai-design.github.io/monopass</a></div>
               <div><span class="label">Tool</span><span class="val">Claude Cowork</span></div>
-              <div><span class="label">配分</span><span class="val">実演10分→実習①20分→解説5分→実習②20分→休憩5分</span></div>
             </div>
 
             <div class="s-section">
@@ -1711,16 +1727,11 @@
           <div class="s-body-inner">
             <div class="s-meta">
               <div><span class="label">Tool</span><span class="val">Claude Code</span></div>
-              <div><span class="label">配布物</span><span class="val">participant_transcript.md</span></div>
-              <div><span class="label">配分</span><span class="val">実演15分→実習①20分→解説5分→実習②20分</span></div>
+              <div><span class="label">配布物</span><span class="val">参加者用_文字起こし.txt</span></div>
             </div>
 
             <div class="callout">
               <strong>裏で進めます:</strong> ここで入れる Playwright と pdftotext は、14:00 セッション(発注 + 経費)で実際に火を吹きます。今のうちに準備しておきましょう。
-            </div>
-
-            <div class="callout placeholder">
-              <strong>VSCode は今日入れません</strong> — VSCode は Claude Code を VSCode 内から呼び出すための人気エディタですが、本日は扱いません。配布物 zip に「家で入れる用」の手順書を同梱しています。興味ある方は持ち帰って試してみてください。
             </div>
 
             <div class="s-section">
@@ -1793,7 +1804,7 @@
 
 ## 配布されたテキスト
 
-`participant_transcript.md`(または同様のファイル名)を読んでください。
+`参加者用_文字起こし.txt`(または同様のファイル名)を読んでください。
 
 ## やってほしいこと(1ステップずつ確認しながら)
 
@@ -1905,11 +1916,11 @@
               <h4>配布する文字起こしテキスト(全文)</h4>
               <div class="scene-note">
                 <span class="scene-label">Handout</span>
-                参加者の Code に読ませる動画文字起こしです。<strong>Playwright と pdftotext を紹介する YouTube 動画</strong>の文字起こし版になっています。実習①で、これを Code に読み込ませます。配布物 zip に <code style="font-family:var(--mono)">participant_transcript.md</code> として同梱しています。
+                参加者の Code に読ませる動画文字起こしです。<strong>Playwright と pdftotext を紹介する YouTube 動画</strong>の文字起こし版になっています。実習①で、これを Code に読み込ませます。配布物 zip に <code style="font-family:var(--mono)">参加者用_文字起こし.txt</code> として同梱しています。
               </div>
               <div class="prompt">
                 <div class="prompt-head">
-                  <span class="prompt-label"><span class="kind">HANDOUT</span>participant_transcript.md</span>
+                  <span class="prompt-label"><span class="kind">HANDOUT</span>参加者用_文字起こし.txt</span>
                   <button class="copy-btn" data-copy="p-11-transcript">Copy</button>
                 </div>
                 <div class="prompt-body" id="p-11-transcript"># Claude Code で業務効率化!便利ツール2選
@@ -2019,7 +2030,6 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
             <div class="s-meta">
               <div><span class="label">Site</span><a class="val" href="https://imai-design.github.io/mock-mail/" target="_blank" rel="noopener">imai-design.github.io/mock-mail</a></div>
               <div><span class="label">Tool</span><span class="val">Claude Cowork</span></div>
-              <div><span class="label">配分</span><span class="val">実演15分→実習①20分→解説5分→実習②20分→休憩5分</span></div>
             </div>
 
             <div class="s-section">
@@ -2257,7 +2267,7 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
             <div class="s-meta">
               <div><span class="label">Site (発注)</span><a class="val" href="https://imai-design.github.io/quick-office/" target="_blank" rel="noopener">imai-design.github.io/quick-office</a></div>
               <div><span class="label">Site (経費)</span><a class="val" href="https://imai-design.github.io/easy-keihi/" target="_blank" rel="noopener">imai-design.github.io/easy-keihi</a></div>
-              <div><span class="label">在庫スプレッドシート</span><span class="val">※共有用URLは当日朝に展開</span></div>
+              <div><span class="label">在庫スプレッドシート</span><a class="val" href="https://docs.google.com/spreadsheets/d/1dv8UauZbpe99I3cmmLGbPth09YBzo1bwZdoYtH33PLs/edit?usp=sharing" target="_blank" rel="noopener">Google Sheets を開く ↗</a></div>
               <div><span class="label">Tools</span><span class="val">Cowork × Code(Playwright + pdftotext)</span></div>
             </div>
 
@@ -2319,7 +2329,6 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
             <div class="s-meta">
               <div><span class="label">Tool</span><span class="val">Claude Code(プランモード)</span></div>
               <div><span class="label">成果物</span><span class="val">自分専用の日割り計算ツール</span></div>
-              <div><span class="label">配分</span><span class="val">講師実演15分→実習①20分→解説5分→実習②20分</span></div>
             </div>
 
             <div class="s-section">
@@ -2535,7 +2544,7 @@ Playwright のいいところは、Chrome、Firefox、Safari、全部のブラ�
     <a class="handout-card" href="assets/claude-camp-handout.zip" download="claude-camp-配布物.zip">
       <div class="h-eyebrow">Handout · ZIP</div>
       <div class="h-title">本日の配布物（zip）をダウンロード</div>
-      <div class="h-desc">README ／ 11時セッションの文字起こし（participant_transcript.md）／ 家で入れる用の手順書（VSCode・GitHub）／ チャットフレーズ集 を同梱しています。9:00 のセットアップで使います。</div>
+      <div class="h-desc">README ／ 当日のリンク集 ／ 11時セッションの文字起こし（参加者用_文字起こし.txt）／ VSCode手順書 ／ GitHubアカウント作成手順 を同梱しています。9:00 のセットアップで使います。</div>
       <div class="h-meta">
         <span>claude-camp-配布物.zip</span>
         <span>·</span>
