@@ -3092,6 +3092,101 @@ HPのファイル一式を1つのフォルダにまとめてください。
             </div>
 
             <div class="s-section">
+              <h4>VS Code 拡張で Claude Code を動かす — IDE で完結する</h4>
+              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft)">ターミナルから <code>claude</code> を起動するだけでなく、<strong style="color:var(--ink)">VS Code の中に Claude Code パネルを常駐させて使う</strong>こともできます。コードを編集しながら横で対話できるので、ファイル編集や差分確認、コードレビューが一気にラクになります。9:00 セットアップで VS Code を入れていただいたのは、ここで効いてきます。</p>
+
+              <div style="margin-top:18px;padding:18px 22px;background:var(--cream);border-left:3px solid var(--orange);border-radius:0 2px 2px 0">
+                <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:8px">What you can do</div>
+                <ul style="list-style:none;padding:0;margin:0;font-size:13.5px;line-height:1.8;color:var(--ink)">
+                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;VS Code の右側（または好きな場所）に Claude のチャットパネルを常駐</li>
+                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;エディタで選択した範囲を Claude が自動で認識</li>
+                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;提案された変更を <strong>差分(diff)表示</strong> で確認 → ワンクリック承認 / 拒否</li>
+                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;<code>@ファイル名</code> で特定のファイル / フォルダを参照</li>
+                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;セッション履歴の検索・復元、複数会話を別タブで並行</li>
+                  <li style="padding:4px 0">✓ &nbsp;Plan モードでは <strong>計画書がマークダウンで開く</strong>ので、コメント付けてから承認できる</li>
+                </ul>
+              </div>
+
+              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">必要なもの</h5>
+              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
+                <li>VS Code <strong>1.98 以上</strong>（Help → About で確認できます）</li>
+                <li>Anthropic アカウント（Claude Pro / Max などのサブスク契約）</li>
+                <li>Node.js 18 以上（Claude Code を既に入れている方は OK）</li>
+              </ul>
+
+              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順① インストール</h5>
+              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
+                <li>VS Code を開く</li>
+                <li>拡張機能ビューを開く：<code>Cmd+Shift+X</code>（Mac） / <code>Ctrl+Shift+X</code>（Windows）</li>
+                <li>検索欄に <strong>「Claude Code」</strong> と入力</li>
+                <li><strong>発行元が「Anthropic」のもの</strong>を選んで「Install」をクリック</li>
+                <li>インストール完了後、もし反映されなければコマンドパレットで <code>Developer: Reload Window</code> を実行</li>
+              </ol>
+              <div class="cmd-row" style="margin-top:12px">
+                <span class="cmd-text">https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code</span>
+                <a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code" target="_blank" rel="noopener" class="cmd-link" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">マーケットプレイスを開く ↗</a>
+              </div>
+
+              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順② サインイン</h5>
+              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
+                <li>VS Code 左サイドバーの <strong>Spark アイコン（✱）</strong> をクリック</li>
+                <li>パネル上部の「<strong>Sign in</strong>」ボタンを押す</li>
+                <li>ブラウザが開くので、Claude アカウントで認可（許可）する</li>
+                <li>VS Code に戻ると、サインイン完了</li>
+              </ol>
+              <p style="margin-top:8px;font-size:12.5px;color:var(--ink-faint);line-height:1.6">サインイン画面が出続けるときは、ターミナルから <code>code .</code> で VS Code を起動すると環境変数を引き継いでくれて解決することがあります。</p>
+
+              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順③ 開き方（4 通り）</h5>
+              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
+                <li><strong>エディタ右上の Spark アイコン</strong>（ファイルを開いているときに表示）</li>
+                <li><strong>左サイドバーの Spark アイコン</strong>（常時表示・セッション一覧が見える）</li>
+                <li><strong>右下ステータスバー「✱ Claude Code」</strong>（ファイル未オープンでも可）</li>
+                <li><strong>コマンドパレット</strong>：<code>Cmd+Shift+P</code> → 「Claude Code」と入力</li>
+              </ul>
+
+              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順④ 基本の使い方</h5>
+              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
+                <li>ファイルを開いて、コードを<strong>範囲選択</strong>すると、Claude が自動で内容を見ます</li>
+                <li>パネル下のプロンプト欄に質問・指示を入力 → Enter で送信</li>
+                <li>Claude が変更を提案 → <strong>差分が表示される</strong> → 「Accept / Reject」で判断</li>
+                <li>ファイルを明示的に参照するときは <code>@ファイル名</code>（部分一致OK）。フォルダは末尾に <code>/</code>(例: <code>@src/components/</code>)</li>
+                <li>選択範囲を行番号付きで参照：<code>Option+K</code>（Mac） / <code>Alt+K</code>（Windows）で <code>@app.ts#5-10</code> のような参照を自動挿入</li>
+              </ol>
+
+              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">便利なショートカット</h5>
+              <div style="margin-top:10px;border:1px solid var(--line-soft);border-radius:3px;overflow:hidden">
+                <table style="width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.5">
+                  <tr style="background:var(--cream-deep)">
+                    <th style="text-align:left;padding:8px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;width:40%">Mac / Windows</th>
+                    <th style="text-align:left;padding:8px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600">できること</th>
+                  </tr>
+                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Cmd+Esc</code> / <code style="background:transparent;padding:0;color:var(--orange-dark)">Ctrl+Esc</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">エディタ ⇄ Claude のフォーカス切替</td></tr>
+                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Cmd+Shift+Esc</code> / <code style="background:transparent;padding:0;color:var(--orange-dark)">Ctrl+Shift+Esc</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">新規会話を別タブで開く</td></tr>
+                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Option+K</code> / <code style="background:transparent;padding:0;color:var(--orange-dark)">Alt+K</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">選択範囲を @-mention でプロンプトに挿入</td></tr>
+                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Shift+Enter</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">プロンプトで改行（送信せず）</td></tr>
+                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Cmd+,</code> / <code style="background:transparent;padding:0;color:var(--orange-dark)">Ctrl+,</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">設定を開く → Extensions → Claude Code</td></tr>
+                </table>
+              </div>
+
+              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">ターミナル版（<code>claude</code> コマンド）との関係</h5>
+              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
+                <li>VS Code 拡張とターミナル版は <strong>会話履歴を共有</strong> しています</li>
+                <li>拡張で始めた会話をターミナルで続けるには <code>claude --resume</code></li>
+                <li>VS Code 内のターミナルで <code>claude</code> を起動すると <strong>自動的に IDE と連携</strong>（diff 表示などが効く）</li>
+              </ul>
+
+              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">よくあるトラブル</h5>
+              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
+                <li><strong>Spark アイコンが見えない</strong> → ファイルを1つ開いてから確認 / VS Code を再起動（<code>Developer: Reload Window</code>） / 他の AI 拡張（Cline、Continue など）を一時的に無効化</li>
+                <li><strong>Mac で <code>Cmd+Esc</code> が効かない</strong> → システム設定 → キーボード → キーボードショートカット → ゲームコントローラー の「Game Overlay」のチェックを外す</li>
+                <li><strong>ログイン画面が出続ける</strong> → ターミナルから <code>code .</code> で起動して環境変数を引き継ぐ</li>
+                <li><strong>反応がない</strong> → 新しい会話を始める / 一度 <code>claude</code> をターミナルで起動して詳細エラーを確認</li>
+              </ul>
+
+              <p style="margin-top:18px;font-size:13px"><a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener" style="color:var(--orange-dark);text-decoration:none;border-bottom:1px solid var(--orange-soft);font-family:var(--mono);letter-spacing:.02em">公式ドキュメント: code.claude.com/docs/en/vs-code ↗</a></p>
+            </div>
+
+            <div class="s-section">
               <h4>Obsidian 連携 — Code に「いつもの自分」を覚えさせる</h4>
               <p style="font-size:14px;line-height:1.75;color:var(--ink-soft)">Obsidian は、ローカルで動く Markdown ベースのノートアプリです。業務の前提・お客様情報・自分の好み・進行中タスクなどを Obsidian に貯めておくと、<strong style="color:var(--ink)">別ターミナル / 別セッションの Claude Code でも、毎回ゼロから説明しなおさず同じ前提で続きを始められます</strong>。当日は実演で「記憶の引き継ぎ」の感覚をお見せします。</p>
               <p style="font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin-top:10px">使い方のコツは、<strong style="color:var(--ink)">「Code に読ませる前提のノート」を専用フォルダにまとめる</strong>ことです。ファイルパスを Code に伝えるだけで、長文の文脈を一発で渡せます。</p>
