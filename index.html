@@ -1625,19 +1625,9 @@
               <div><span class="label">配布物</span><span class="val">参加者用_文字起こし.txt</span></div>
             </div>
 
-            <div class="callout">
-              <strong>裏で進めます:</strong> ここで入れる Playwright と pdftotext は、14:00 セッション(発注 + 経費)で実際に火を吹きます。今のうちに準備しておきましょう。
-            </div>
 
 
 
-            <div class="s-section">
-              <h4>ECC (Everything Claude Code) — Claude Code を拡張する</h4>
-              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft)">ECC は、Claude Code を <strong style="color:var(--ink)">サブエージェント / スラッシュコマンド / カスタムフック / MCP 連携</strong> などで拡張するためのキットです。Playwright と pdftotext が「使える道具を増やす」拡張だとすると、<strong style="color:var(--ink)">ECC は「Claude 自身を賢くする」拡張</strong>です。前の実習に続けて、ここで一緒に入れてしまいましょう。</p>
-              <p style="font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin-top:10px">導入のときは <strong style="color:var(--ink)">Claude Code 本人に手伝ってもらう</strong>のが一番ラクです。下のプロンプトを Code に渡せば、README の理解 → 依存関係チェック → インストール計画 → 実行 → 動作確認まで一気通貫でやってくれます。</p>
-              <p style="margin-top:14px;font-size:13px"><a href="https://github.com/affaan-m/everything-claude-code" target="_blank" rel="noopener" style="color:var(--orange-dark);text-decoration:none;border-bottom:1px solid var(--orange-soft);font-family:var(--mono);letter-spacing:.02em">github.com/affaan-m/everything-claude-code ↗</a></p>
-
-            </div>
 
           </div>
         </div>
@@ -1715,37 +1705,7 @@
               <div><span class="label">Tools</span><span class="val">Cowork × Code(Playwright + pdftotext)</span></div>
             </div>
 
-            <div class="s-section">
-              <h4>このセッションの全体フロー</h4>
-              <div class="flow-split">
-                <div class="flow-col">
-                  <h5>Cowork パート / 発注 + 領収書DL</h5>
-                  <ol>
-                    <li>在庫スプレッドシートを確認 → 「要発注」商品を特定</li>
-                    <li>Quick Office にログイン → 商品をカートに追加</li>
-                    <li>注文確定</li>
-                    <li>領収書 PDF をダウンロード</li>
-                  </ol>
-                </div>
-                <div class="flow-col">
-                  <h5>Code パート / PDF解析 + 経費申請</h5>
-                  <ol>
-                    <li>ダウンロードフォルダの最新 PDF を特定</li>
-                    <li><code style="font-family:var(--mono);font-size:11px;background:var(--cream-deep);padding:1px 4px;border-radius:2px">pdftotext</code> で PDF をテキスト抽出</li>
-                    <li><code style="font-family:var(--mono);font-size:11px;background:var(--cream-deep);padding:1px 4px;border-radius:2px">Playwright</code> で Easy経費 を起動・ログイン</li>
-                    <li>フォーム入力(利用日・利用先・金額・勘定科目・摘要)</li>
-                    <li>「申請する」をクリック → ダッシュボード反映</li>
-                  </ol>
-                </div>
-              </div>
-              <div class="flow-bridge">
-                Cowork → Code の<strong>橋渡しは人間が判断します</strong>。「領収書 DL 完了 → Code に『最新の領収書 PDF を処理して』」と切り替えます。
-              </div>
-            </div>
 
-            <div class="callout">
-              <strong>学びのポイント:</strong> Cowork は「画面に見えるもの」が得意、Code は「ファイル処理・自動化」が得意です。<strong>両方を使い分けると、現実の業務全体が自動化できます</strong>。今日のクライマックスです。
-            </div>
 
 
 
@@ -1775,28 +1735,9 @@
               <div><span class="label">成果物</span><span class="val">自分専用の日割り計算ツール</span></div>
             </div>
 
-            <div class="s-section">
-              <h4>プランモードとは(参加者への説明)</h4>
-              <blockquote style="margin:0;padding:18px 22px;background:var(--cream);border-left:3px solid var(--orange);font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.7;color:var(--ink);border-radius:0 2px 2px 0">
-                プランモードは、Claude Code の機能の一つです。通常モードは Code がいきなり実装し始めます。プランモードは、まず<strong style="color:var(--orange-dark);font-style:normal">「こういう順番で作ります」という計画</strong>を見せてくれます。計画を承認したら実装に進む、という流れです。<br><br>
-                <span style="font-style:normal;font-family:var(--sans);font-size:14px;color:var(--ink-soft)">いきなり書かれて方向性違いの大手戻りを防げます。初めて Code を使う時は、<strong style="color:var(--ink)">プランモード推奨</strong>です。</span>
-              </blockquote>
-            </div>
 
-            <div class="s-section">
-              <h4>講師実演(15分) — 多機能版を Code に作らせる</h4>
-              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">講師は<strong style="color:var(--ink)">多機能版</strong>を Code に作らせて、皆さんにお見せします。月額給与・対象月・入社/退社日・休職期間・有給・各種手当などを盛り込んだ HTML ファイルとして完成します。localStorage 履歴と CSV/PDF エクスポート機能つきです。</p>
-            </div>
 
-            <div class="s-section">
-              <h4>実習①(20分) — プランモードでシンプル版を作成</h4>
-              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">参加者の皆さんは <strong style="color:var(--ink)">シンプル版</strong>(月額 + 営業日数 + 出勤日数 → 日割り給与)を、プランモードで実装します。<strong style="color:var(--ink)">Code 内で対話形式</strong>(計画提示 → 承認 → 実装)で進めます。</p>
-            </div>
 
-            <div class="s-section">
-              <h4>実習②(20分) — 自由応用 / ブレスト</h4>
-              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)">作ったツールを起点に、ご自身の業務でどう使えるかを Claude とブレストします。応用案を 3 つに絞り、選んだ 1 つの雛形までその場で作ります。</p>
-            </div>
           </div>
         </div>
       </details>
@@ -1824,50 +1765,8 @@
               <div><span class="label">成果物</span><span class="val">構想レポート + HP(公開URL付き)</span></div>
             </div>
 
-            <div class="s-section">
-              <h4>講師実演の全体フロー(5 Phase)</h4>
-              <ul class="phase-list">
-                <li class="phase">
-                  <div>
-                    <div class="p-title">偉人ディスカッション<span class="p-time">約 1 分</span></div>
-                    <div class="p-body">サブエージェント機能で 3 人の偉人をディスカッションさせます。各偉人の視点でビジネスアイデアを出させ、統合してコンセプトを決定します。偉人選定は Code に自由に任せます。</div>
-                  </div>
-                </li>
-                <li class="phase">
-                  <div>
-                    <div class="p-title">構想レポートを HTML で作成<span class="p-time">約 2 分</span></div>
-                    <div class="p-body">ディスカッション結果を「業務文書」として HTML にまとめます。ファイル名は <code style="font-family:var(--mono);font-size:11.5px;background:var(--cream-deep);padding:1px 6px;border-radius:2px;color:var(--orange-dark)">business-report.html</code> です。</div>
-                  </div>
-                </li>
-                <li class="phase">
-                  <div>
-                    <div class="p-title">HP 構成設計<span class="p-time">約 1 分</span></div>
-                    <div class="p-body">レポートの内容を元に、ランディングページの構成を設計します。</div>
-                  </div>
-                </li>
-                <li class="phase">
-                  <div>
-                    <div class="p-title">HP 実装<span class="p-time">約 2–3 分</span></div>
-                    <div class="p-body">ファイル名は <code style="font-family:var(--mono);font-size:11.5px;background:var(--cream-deep);padding:1px 6px;border-radius:2px;color:var(--orange-dark)">index.html</code>。商品ページとして仕上げます。</div>
-                  </div>
-                </li>
-                <li class="phase">
-                  <div>
-                    <div class="p-title">Netlify Drop でデプロイ<span class="p-time">30秒〜1分</span></div>
-                    <div class="p-body">講師が <a href="https://app.netlify.com/drop" target="_blank" rel="noopener" style="color:var(--orange-dark);border-bottom:1px solid var(--orange-soft);text-decoration:none">app.netlify.com/drop</a> にフォルダをドラッグします。アカウント不要で、ドラッグするだけで公開 URL が発行されます。<br><span style="color:var(--ink-faint);font-size:12.5px">※ GitHub Pages はビルド時間問題があるため不採用</span></div>
-                  </div>
-                </li>
-              </ul>
-            </div>
 
-            <div class="callout">
-              <strong>レポートと HP は分離します。</strong> Phase 2 の <code style="font-family:var(--mono);font-size:11.5px">business-report.html</code> はビジネス構想ドキュメント、Phase 4 の <code style="font-family:var(--mono);font-size:11.5px">index.html</code> はサービスのランディングページ。役割が違うので、分けて作ります。
-            </div>
 
-            <div class="s-section">
-              <h4>参加者実習</h4>
-              <p style="font-size:14px;line-height:1.7;color:var(--ink-soft)"><strong style="color:var(--ink)">実習①:</strong> プランモードで、自分のビジネス(架空でも構いません)を偉人ディスカッションで練り上げます。<br><strong style="color:var(--ink)">実習②:</strong> 実習①で決まったコンセプトに基づいて HP を実装し、Netlify Drop でデプロイします。</p>
-            </div>
 
 
 
@@ -1895,155 +1794,10 @@
               <div><span class="label">構成</span><span class="val">検討15分 → 発表15分 → Q&amp;A 30分</span></div>
             </div>
 
-            <div class="s-section">
-              <h4>このセッションの構成(3 Phase)</h4>
-              <ul class="phase-list">
-                <li class="phase">
-                  <div>
-                    <div class="p-title">検討タイム(個人ワーク)<span class="p-time">15 分</span></div>
-                    <div class="p-body">「自分のビジネスでどう使うか」を考えていただきます。下のガイド質問を、画面または Zoom チャットで提示します。</div>
-                  </div>
-                </li>
-                <li class="phase">
-                  <div>
-                    <div class="p-title">発表 + 講師コメント<span class="p-time">15 分 · 3–4 人</span></div>
-                    <div class="p-body">挙手または講師指名で 3–4 人。発表者は 1 分発表、講師から 30 秒コメントをお返しします。</div>
-                  </div>
-                </li>
-                <li class="phase">
-                  <div>
-                    <div class="p-title">質疑応答 + 締めの挨拶<span class="p-time">30 分</span></div>
-                    <div class="p-body">挙手または Zoom チャットで質問を集めます。じっくり時間をとって、お一人ずつの疑問にお答えします。最後に締めの挨拶(下記)をお伝えします。</div>
-                  </div>
-                </li>
-              </ul>
-            </div>
 
-            <div class="s-section">
-              <h4>検討タイムの問い(参加者用)</h4>
-              <div class="reflect-block">
-                <div class="r-eyebrow">— Reflection · 15 minutes solo</div>
-                <ol>
-                  <li>今日いちばん「使えそう」と思ったセッションは?</li>
-                  <li>その内容を、自分の業務の<em>どの作業</em>に当てはめられそう?</li>
-                  <li>明日からまず1つやるとしたら、何?</li>
-                </ol>
-                <div class="r-foot">
-                  完璧でなくて構いません・1 つ決まれば OK です・困ったら隣の人や Claude にご相談ください。
-                </div>
-              </div>
-            </div>
 
-            <div class="s-section">
-              <h4>VS Code 拡張で Claude Code を動かす — IDE で完結する</h4>
-              <p style="font-size:14px;line-height:1.75;color:var(--ink-soft)">ターミナルから <code>claude</code> を起動するだけでなく、<strong style="color:var(--ink)">VS Code の中に Claude Code パネルを常駐させて使う</strong>こともできます。コードを編集しながら横で対話できるので、ファイル編集や差分確認、コードレビューが一気にラクになります。9:00 セットアップで VS Code を入れていただいたのは、ここで効いてきます。</p>
 
-              <div style="margin-top:18px;padding:18px 22px;background:var(--cream);border-left:3px solid var(--orange);border-radius:0 2px 2px 0">
-                <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:8px">What you can do</div>
-                <ul style="list-style:none;padding:0;margin:0;font-size:13.5px;line-height:1.8;color:var(--ink)">
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;VS Code の右側（または好きな場所）に Claude のチャットパネルを常駐</li>
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;エディタで選択した範囲を Claude が自動で認識</li>
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;提案された変更を <strong>差分(diff)表示</strong> で確認 → ワンクリック承認 / 拒否</li>
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;<code>@ファイル名</code> で特定のファイル / フォルダを参照</li>
-                  <li style="padding:4px 0;border-bottom:1px dashed var(--line-soft)">✓ &nbsp;セッション履歴の検索・復元、複数会話を別タブで並行</li>
-                  <li style="padding:4px 0">✓ &nbsp;Plan モードでは <strong>計画書がマークダウンで開く</strong>ので、コメント付けてから承認できる</li>
-                </ul>
-              </div>
 
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">必要なもの</h5>
-              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li>VS Code <strong>1.98 以上</strong>（Help → About で確認できます）</li>
-                <li>Anthropic アカウント（Claude Pro / Max などのサブスク契約）</li>
-                <li>Node.js 18 以上（Claude Code を既に入れている方は OK）</li>
-              </ul>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順① インストール</h5>
-              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li>VS Code を開く</li>
-                <li>拡張機能ビューを開く：<code>Cmd+Shift+X</code>（Mac） / <code>Ctrl+Shift+X</code>（Windows）</li>
-                <li>検索欄に <strong>「Claude Code」</strong> と入力</li>
-                <li><strong>発行元が「Anthropic」のもの</strong>を選んで「Install」をクリック</li>
-                <li>インストール完了後、もし反映されなければコマンドパレットで <code>Developer: Reload Window</code> を実行</li>
-              </ol>
-              <div class="cmd-row" style="margin-top:12px">
-                <span class="cmd-text">https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code</span>
-                <a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code" target="_blank" rel="noopener" class="cmd-link" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">マーケットプレイスを開く ↗</a>
-              </div>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順② サインイン</h5>
-              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li>VS Code 左サイドバーの <strong>Spark アイコン（✱）</strong> をクリック</li>
-                <li>パネル上部の「<strong>Sign in</strong>」ボタンを押す</li>
-                <li>ブラウザが開くので、Claude アカウントで認可（許可）する</li>
-                <li>VS Code に戻ると、サインイン完了</li>
-              </ol>
-              <p style="margin-top:8px;font-size:12.5px;color:var(--ink-faint);line-height:1.6">サインイン画面が出続けるときは、ターミナルから <code>code .</code> で VS Code を起動すると環境変数を引き継いでくれて解決することがあります。</p>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順③ 開き方（4 通り）</h5>
-              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li><strong>エディタ右上の Spark アイコン</strong>（ファイルを開いているときに表示）</li>
-                <li><strong>左サイドバーの Spark アイコン</strong>（常時表示・セッション一覧が見える）</li>
-                <li><strong>右下ステータスバー「✱ Claude Code」</strong>（ファイル未オープンでも可）</li>
-                <li><strong>コマンドパレット</strong>：<code>Cmd+Shift+P</code> → 「Claude Code」と入力</li>
-              </ul>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">手順④ 基本の使い方</h5>
-              <ol style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li>ファイルを開いて、コードを<strong>範囲選択</strong>すると、Claude が自動で内容を見ます</li>
-                <li>パネル下のプロンプト欄に質問・指示を入力 → Enter で送信</li>
-                <li>Claude が変更を提案 → <strong>差分が表示される</strong> → 「Accept / Reject」で判断</li>
-                <li>ファイルを明示的に参照するときは <code>@ファイル名</code>（部分一致OK）。フォルダは末尾に <code>/</code>(例: <code>@src/components/</code>)</li>
-                <li>選択範囲を行番号付きで参照：<code>Option+K</code>（Mac） / <code>Alt+K</code>（Windows）で <code>@app.ts#5-10</code> のような参照を自動挿入</li>
-              </ol>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">便利なショートカット</h5>
-              <div style="margin-top:10px;border:1px solid var(--line-soft);border-radius:3px;overflow:hidden">
-                <table style="width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.5">
-                  <tr style="background:var(--cream-deep)">
-                    <th style="text-align:left;padding:8px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;width:40%">Mac / Windows</th>
-                    <th style="text-align:left;padding:8px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600">できること</th>
-                  </tr>
-                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Cmd+Esc</code> / <code style="background:transparent;padding:0;color:var(--orange-dark)">Ctrl+Esc</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">エディタ ⇄ Claude のフォーカス切替</td></tr>
-                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Cmd+Shift+Esc</code> / <code style="background:transparent;padding:0;color:var(--orange-dark)">Ctrl+Shift+Esc</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">新規会話を別タブで開く</td></tr>
-                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Option+K</code> / <code style="background:transparent;padding:0;color:var(--orange-dark)">Alt+K</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">選択範囲を @-mention でプロンプトに挿入</td></tr>
-                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Shift+Enter</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">プロンプトで改行（送信せず）</td></tr>
-                  <tr><td style="padding:8px 14px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px"><code style="background:transparent;padding:0;color:var(--orange-dark)">Cmd+,</code> / <code style="background:transparent;padding:0;color:var(--orange-dark)">Ctrl+,</code></td><td style="padding:8px 14px;border-top:1px solid var(--line-soft);color:var(--ink)">設定を開く → Extensions → Claude Code</td></tr>
-                </table>
-              </div>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">ターミナル版（<code>claude</code> コマンド）との関係</h5>
-              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li>VS Code 拡張とターミナル版は <strong>会話履歴を共有</strong> しています</li>
-                <li>拡張で始めた会話をターミナルで続けるには <code>claude --resume</code></li>
-                <li>VS Code 内のターミナルで <code>claude</code> を起動すると <strong>自動的に IDE と連携</strong>（diff 表示などが効く）</li>
-              </ul>
-
-              <h5 style="margin-top:24px;font-family:var(--serif);font-weight:480;font-size:16px;color:var(--ink);letter-spacing:-.005em">よくあるトラブル</h5>
-              <ul style="margin-top:8px;padding-left:20px;font-size:13.5px;line-height:1.8;color:var(--ink-soft)">
-                <li><strong>Spark アイコンが見えない</strong> → ファイルを1つ開いてから確認 / VS Code を再起動（<code>Developer: Reload Window</code>） / 他の AI 拡張（Cline、Continue など）を一時的に無効化</li>
-                <li><strong>Mac で <code>Cmd+Esc</code> が効かない</strong> → システム設定 → キーボード → キーボードショートカット → ゲームコントローラー の「Game Overlay」のチェックを外す</li>
-                <li><strong>ログイン画面が出続ける</strong> → ターミナルから <code>code .</code> で起動して環境変数を引き継ぐ</li>
-                <li><strong>反応がない</strong> → 新しい会話を始める / 一度 <code>claude</code> をターミナルで起動して詳細エラーを確認</li>
-              </ul>
-
-              <p style="margin-top:18px;font-size:13px"><a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener" style="color:var(--orange-dark);text-decoration:none;border-bottom:1px solid var(--orange-soft);font-family:var(--mono);letter-spacing:.02em">公式ドキュメント: code.claude.com/docs/en/vs-code ↗</a></p>
-            </div>
-
-            <div class="s-section">
-              <h4>締めの挨拶(講師の最後の言葉)</h4>
-              <div class="closing-card">
-                <p>皆さん、今日は1日お疲れさまでした。</p>
-                <p>今日は制限してやってもらいましたが、だいぶやりたいことが増えたんじゃないでしょうか? 課金して使いまくった時のパワーで、これがどれくらいの利益になるか、想像できたんじゃないでしょうか。</p>
-                <p><em>私は、課金して使いまくることをお勧めします。</em></p>
-                <p>ちなみに、Pro より上の Max プランにすると、「Auto モード」という節約モードが追加されます。Claude がタスクの難易度を判断して、最適なモデルを選んで動いてくれます。コストを抑えながらパワフルに使えます。</p>
-                <p>明日からまず1つやってみてください。詰まったら、Claude が一緒に考えてくれます。<br>1人で抱え込まないで、AIを相棒にしてください。</p>
-                <p style="margin-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">— ありがとうございました!</p>
-              </div>
-            </div>
-
-            <div class="callout">
-              <strong>時間が余ったら:</strong> 同じプロンプトを Opus と Sonnet で実行して、レスポンスの違い(深さ、複雑な推論能力)を体感していただきます。
-            </div>
           </div>
         </div>
       </details>
