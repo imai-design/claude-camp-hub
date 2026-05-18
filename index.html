@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Claude 1日CAMP — 2026年5月11日 参加者用ハブ">
-<title>Claude 1日CAMP / 2026.05.11 — 参加者ハブ</title>
+<meta name="description" content="Claude 1日CAMP — 2026年5月19日 参加者用ハブ">
+<title>Claude 1日CAMP / 2026.05.19 — 参加者ハブ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -1370,7 +1370,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="hero-meta">
-      <span><span class="dot"></span>2026.05.11 · MONDAY · 9:00–18:00 JST</span>
+      <span><span class="dot"></span>2026.05.19 · TUESDAY · 9:00–18:00 JST</span>
       <span>Vol. 01 / Hosted by ホリエモンAI学校</span>
     </div>
 
@@ -1536,15 +1536,9 @@
             </div>
 
             <div class="s-section">
-              <h4>全員でやる7ステップ</h4>
+              <h4>全員でやる6ステップ</h4>
               <ol class="setup-list">
-                <li>
-                  <div class="setup-li-body">
-                    <div>デスクトップに <code>claude-camp</code> フォルダを作成</div>
-                    <div class="cmd-hint">デスクトップで <strong>右クリック → 新規フォルダ</strong>（Windows は「新規作成 → フォルダー」）。名前を <code>claude-camp</code> にする。Mac / Windows 共通の作り方です。</div>
-                  </div>
-                </li>
-                <li><span><a href="assets/claude-camp-handout.zip" download="claude-camp-配布物.zip" style="color:var(--orange-dark);text-decoration:underline;text-underline-offset:3px"><strong>配布物(zip)</strong>をダウンロード</a>して、<strong>解凍したフォルダを <code>claude-camp</code> の中に入れる</strong></span></li>
+                <li><span><a href="assets/claude-camp-handout.zip" download="claude-camp-配布物.zip" style="color:var(--orange-dark);text-decoration:underline;text-underline-offset:3px"><strong>配布物(zip)</strong>をダウンロード</a>して、<strong>解凍</strong>する（デスクトップなど分かりやすい場所に置いておく）</span></li>
                 <li>
                   <div class="setup-li-body">
                     <div><strong>Claude アカウント</strong>を作成</div>
@@ -1826,7 +1820,7 @@
         <span>·</span>
         <span>約 12 KB</span>
         <span>·</span>
-        <span>更新: 2026-05-11</span>
+        <span>更新: 2026-05-19</span>
       </div>
       <div class="h-cta">
         <span>ダウンロード</span>
@@ -1957,7 +1951,7 @@
           <div class="label">★ Today's Rule</div>
           <div class="title">「今日の日付」をプロンプトに。</div>
           <div class="body">Cowork は日付を持っていません。日程調整・期限・「来週」などを扱う時は、必ずプロンプト冒頭に書き添えてください。</div>
-          <code>今日は2026年5月11日(月)です。</code>
+          <code>今日は2026年5月19日(火)です。</code>
         </div>
       </div>
     </div>
@@ -1996,7 +1990,7 @@
   'use strict';
 
   /* ---------- Schedule data (for current-session detection) ---------- */
-  // Camp date: 2026-05-11 (Mon). All times JST.
+  // Camp date: 2026-05-19 (Tue). All times JST.
   // Session boundaries by hour slot.
   const SLOTS = [
     {slot:'09', start:9,  end:10, title:'セットアップ',                       id:'sess-09'},
@@ -2009,7 +2003,7 @@
     {slot:'16', start:16, end:17, title:'ビジネスアイデアを HP に',           id:'sess-16'},
     {slot:'17', start:17, end:18, title:'業務への反映と質疑応答',             id:'sess-17'}
   ];
-  const CAMP_DATE = '2026-05-11';
+  const CAMP_DATE = '2026-05-19';
 
   /* ---------- Now detection ---------- */
   function pad(n){return String(n).padStart(2,'0')}
@@ -2023,7 +2017,7 @@
     if(!isCampDay){
       // Pre-camp or post-camp
       if(today < CAMP_DATE){
-        return {state:'pre', label:'本番前 / Preview', title:'2026.05.11 まで待機中', remaining:null};
+        return {state:'pre', label:'本番前 / Preview', title:'2026.05.19 まで待機中', remaining:null};
       }else{
         return {state:'post', label:'1日 おつかれさまでした', title:'Camp Complete', remaining:null};
       }
@@ -2150,7 +2144,7 @@
   }
 
   /* ---------- Progress checklist (localStorage) ---------- */
-  const STORAGE_KEY = 'camp-2026-05-11-progress';
+  const STORAGE_KEY = 'camp-2026-05-19-progress';
   function loadProgress(){
     try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
     catch(e){ return {}; }
